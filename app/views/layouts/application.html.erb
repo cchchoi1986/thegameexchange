@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project1</title>
+  <title>The Game Exchange</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="body">
+    <!-- <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
+  <header id="header">
+    <%= render 'layouts/header' %>
+  </header>
 
-<%= yield %>
+  <main class="container">
+    <%= yield %>
+  </main>
+
+  <footer class="footer">
+    <%= render 'layouts/footer' %>
+  </footer>
 
 </body>
 </html>

@@ -1,0 +1,92 @@
+.body {
+  background-color: #666;
+}
+
+.navbar-brand {
+  // overflow: hidden;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: orange;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.body > .container {
+  padding: 60px 15px 80px;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.navbar.navbar-default.navbar-fixed-top{
+  background: orange;
+}
+
+.gamelist {
+  margin: 0 0 20px;
+}
+
+.custom-list {
+  background: #999;
+  padding-left: 30px;
+  border: 2px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#custom-logo {
+  font-size: 28px;
+}
+
+@media (min-width: 500px) {
+  #custom-logo {
+    font-size: 38px;
+  }
+}
+
+#navbar {
+  // background: #E3A62B;
+}
+
+#userprofile {
+  // border: 3px solid black;
+  background: #e7e7e7;
+}
+
+#username {
+  font-size: 18px;
+  color: black;
+}
+
+#profile-options {
+  font-size: 10px;
+  // color: blue;
+  // margin: 2px;
+  // padding: 2px;
+}
