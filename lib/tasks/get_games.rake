@@ -8,7 +8,7 @@ namespace :get_games do
     require 'nokogiri'
 
     
-    ind = 6300
+    ind = 0
     
     tot_items = ind +1
     
@@ -36,7 +36,7 @@ namespace :get_games do
     while ind < tot_items do
       # puts data
       require_uri = 'http://www.play-asia.com/__api__.php?'
-      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=10&compatible=38&start='+ind.to_s
+      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&compatible=4&start='+ind.to_s
       url = "#{require_uri}#{require_query}"
       data = open(url).read
       doc = Nokogiri::XML(data)
@@ -62,23 +62,21 @@ namespace :get_games do
         games_array.push(ng)
       end
       
-      if tot_items - ind < 10
+      if tot_items - ind < 500
         ind+=index_diff
       else
-        ind+=10
+        ind+=500
       end
     end
 
     array_ind = 0
 
     while array_ind < games_array.length do
-      if Game.create(games_array[array_ind])
-        puts "success"
-      else 
-        puts "error"
-      end
+      Game.create(games_array[array_ind])
       array_ind+=1
     end
 
   end
 end
+
+# done: xbox360, xbox one, xbox, wii U(2), nintendo wii, playstation, playstation 2, playstation 4(2). nintendo 64

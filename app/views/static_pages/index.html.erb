@@ -1,4 +1,5 @@
-<h2>Home</h2>
+<h2>Welcome,</h2>
+<h4>Here's what is trending today</h4>
 
 <div class="row">
 
@@ -8,20 +9,24 @@
         Wanted
       </h1>
     
-    <table id='wanted'>
+    <table id='wanted' class="display" cellspacing="0" width="100%">
       <thead>
-        <th class='row'>
-          <td class='col-xs-4'>Title</td>
-          <td class='col-xs-4'>Console</td>
-          <td class='col-xs-4'>Condition</td>
-        </th>
+        <tr class='row'>
+          <th class='col-xs-1'>Pic</th>
+          <th class='col-xs-4'>Title</th>
+          <th class='col-xs-1'>Condition</th>
+          <th class='col-xs-2'>User email</th>
+        </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @wanted_games.each do |usergame| %>
+          <tr class="row">
+            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
+            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
+            <td class="col-xs-1"><%= usergame.condition %></td>
+            <td class="col-xs-2"><%= usergame.user.email %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     </div>
@@ -30,23 +35,27 @@
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6 gamelist">
     <div class="row custom-list">
       <h1>
-        Offered
+        Given
       </h1>
     
-    <table id='offered'>
+    <table id='given' class="display" cellspacing="0" width="100%">
       <thead>
-        <th class='row'>
-          <td class='col-xs-4'>Title</td>
-          <td class='col-xs-4'>Console</td>
-          <td class='col-xs-4'>Condition</td>
-        </th>
+        <tr class='row'>
+          <th class='col-xs-1'>Pic</th>
+          <th class='col-xs-4'>Title</th>
+          <th class='col-xs-1'>Condition</th>
+          <th class='col-xs-2'>User email</th>
+        </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @given_games.each do |usergame| %>
+          <tr class="row">
+            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
+            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
+            <td class="col-xs-1"><%= usergame.condition %></td>
+            <td class="col-xs-2"><%= usergame.user.email %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     </div>

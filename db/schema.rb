@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223062829) do
+ActiveRecord::Schema.define(version: 20141223093340) do
+
+  create_table "consoles", force: true do |t|
+    t.string   "name"
+    t.string   "locale"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.string   "pax"
@@ -25,6 +32,15 @@ ActiveRecord::Schema.define(version: 20141223062829) do
     t.string   "url"
     t.string   "image"
     t.string   "manufacturer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_games", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.string   "wantgive"
+    t.integer  "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

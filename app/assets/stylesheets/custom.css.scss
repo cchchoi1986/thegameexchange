@@ -64,7 +64,19 @@ code {
   font-size: 28px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 768px) {
+  #custom-logo {
+    font-size: 38px;
+  }
+}
+
+@media (min-width: 992px) {
+  #custom-logo {
+    font-size: 38px;
+  }
+}
+
+@media (min-width: 1200px) {
   #custom-logo {
     font-size: 38px;
   }
@@ -89,4 +101,8 @@ code {
   // color: blue;
   // margin: 2px;
   // padding: 2px;
+}
+
+.gamelisttitle {
+  overflow: hidden;
 }
