@@ -3,8 +3,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @wanted_game = UserGame.where({user_id: current_user, wantgive: "w"})
-    @given_game = UserGame.where({user_id: current_user, wantgive: "g"})
+    @comments = Comment.where({wall_id: params[:id]})
+    @wanted_game = UserGame.where({user_id: params[:id], wantgive: "w"})
+    @given_game = UserGame.where({user_id: params[:id], wantgive: "g"})
+    @comment = Comment.new
+  end
+
+  def search
+    @games_users_w = User.includes(:user_games).where.not(:user_games => {:user_id=>nil, :wantgive=>'w'})
   end
 
   def index

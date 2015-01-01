@@ -36,7 +36,7 @@ namespace :get_games do
     while ind < tot_items do
       # puts data
       require_uri = 'http://www.play-asia.com/__api__.php?'
-      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&compatible=4&start='+ind.to_s
+      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&compatible=37&start='+ind.to_s
       url = "#{require_uri}#{require_query}"
       data = open(url).read
       doc = Nokogiri::XML(data)
@@ -79,4 +79,4 @@ namespace :get_games do
   end
 end
 
-# done: xbox360, xbox one, xbox, wii U(2), nintendo wii, playstation, playstation 2, playstation 4(2). nintendo 64
+# done: xbox360, xbox one, xbox, wii U(2), nintendo wii, playstation, playstation 2, playstation 4(2). nintendo 64, playstation 3.

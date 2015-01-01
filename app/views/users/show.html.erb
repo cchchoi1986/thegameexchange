@@ -1,65 +1,118 @@
+<div class="row custom-list">
+  <div class="col-xs-12">
+    <%= form_tag("/search/", method: "get") do %>
+      <%= label_tag(:q, "Game Search:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
 
-<h3>Email: <%= @user.email %></h3>
-<h3>Username: <%= @user.username %></h3>
+<div class="jumbo row">
+  <h2><%= @user.avatar_id %></h2>
+  <h2><%= @user.username %></h2>
+  <h5><%= @user.email %></h5>
+  <div>
+    <%= form_for @comment, :method => :post do |f| %>
+      
+      <%= flash[:message] %>
+
+      <% f.label :title %>
+      <% f.text_field :title, class: "commentsform" %>
+
+      <%= f.label "Message:" %>
+      <%= f.text_field :content, class: "commentsform" %>
+
+      <% f.text_field :wall_id, :value => @user.id, :hidden => true %>
+
+      <% f.text_field :user_id, :value => current_user, :hidden => true %>
+
+      <%= f.submit "Submit", class: "gamenavbuttons" %>
+    <% end %>
+  </div>
+  <table class="display table table-border table-condensed" cellspacing="0" width="100%">
+      <thead>
+        <tr class='row'>
+          <th class='col-xs-3'>From</th>
+          <th class='col-xs-6'>Message</th>
+          <th class='col-xs-1'>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr class="row">
+            <td class="col-xs-3 gamelisttext"><%= comment.user.username %></td>
+            <td class="col-xs-8 gamelisttext"><%= comment.content %></td>
+            <td class="col-xs-1"><%= button_to "X", self.user_game_path, method: :delete, class: "removebutton" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
 <div class="row">
 
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
     <div class="row custom-list">
-      <h1>
-        Wanted
+      <h1 class="listtitle">WANTED
       </h1>
-    
-    <table id='wanted'>
+    <table id='wanted' class="display table table-border table-condensed" cellspacing="0" width="100%">
       <thead>
-        <tr class='row'>
+        <tr class='row wantrow'>
           <th class='col-xs-1'>Pic</th>
           <th class='col-xs-4'>Title</th>
-          <th class='col-xs-1'>Condition</th>
-          <th class='col-xs-2'>User email</th>
+          <th class='col-xs-2'>Console</th>
+          <th class='col-xs-1'>Locale</th>
+          <th class='col-xs-3'>Condition</th>
+          <th class='col-xs-1'>Remove</th>
         </tr>
       </thead>
       <tbody>
         <% @wanted_game.each do |usergame| %>
-          <tr class="row">
-            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
-            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
-            <td class="col-xs-1"><%= usergame.condition %></td>
-            <td class="col-xs-2"><%= usergame.user.email %></td>
+          <tr class="row wantrow">
+            <td class="col-xs-1" ><%= link_to usergame.game do %><%= image_tag usergame.game.image, :size => '70x50'  %><% end %></td>
+            <td class="col-xs-4 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 33) %><% end %></td>
+            <td class="col-xs-2 gamelisttext"><%= usergame.game.compatible %></td>
+            <td class="col-xs-1 gamelisttext"><%= usergame.game.version %></td>
+            <td class="col-xs-3 gamelisttext"><%= usergame.condition %></td>
+            <td class="col-xs-1"><%= button_to "X", self.user_game_path, method: :delete, class: "removebutton" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     </div>
+    
   </div>
+
 
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
     <div class="row custom-list">
-      <h1>
-        Given
+      <h1 class="listtitle">GiVEN
       </h1>
-    
-    <table id='given'>
+    <table id='given' class="display table table-border table-condensed" cellspacing="0" width="100%">
       <thead>
-        <tr class='row'>
+        <tr class='row giverow'>
           <th class='col-xs-1'>Pic</th>
           <th class='col-xs-4'>Title</th>
-          <th class='col-xs-1'>Condition</th>
-          <th class='col-xs-2'>User email</th>
+          <th class='col-xs-2'>Console</th>
+          <th class='col-xs-1'>Locale</th>
+          <th class='col-xs-3'>Condition</th>
+          <th class='col-xs-1'>Remove</th>
         </tr>
       </thead>
       <tbody>
         <% @given_game.each do |usergame| %>
-          <tr class="row">
-            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
-            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
-            <td class="col-xs-1"><%= usergame.condition %></td>
-            <td class="col-xs-2"><%= usergame.user.email %></td>
+          <tr class="row giverow">
+            <td class="col-xs-1" ><%= link_to usergame.game do %><%= image_tag usergame.game.image, :size => '70x50'  %><% end %></td>
+            <td class="col-xs-4 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 33) %><% end %></td>
+            <td class="col-xs-2 gamelisttext"><%= usergame.game.compatible %></td>
+            <td class="col-xs-1 gamelisttext"><%= usergame.game.version %></td>
+            <td class="col-xs-3 gamelisttext"><%= usergame.condition %></td>
+            <td class="col-xs-1"><%= button_to "X", self.user_game_path, method: :delete, class: "removebutton" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     </div>
   </div>
-
 </div>

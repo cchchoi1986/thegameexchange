@@ -1,49 +1,93 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="jumbo">
+  <%= link_to "Back", :back %>
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :avatar_id %><br />
-    <%= f.number_field :avatar_id %>
-  </div>
+    <div class="field">
+      <%= f.label "Pick an Avatar" %><br />
+      <%= f.number_field :avatar_id, id: "avatar_id", hidden: true  %>
+      <table>
+        <tr>
+          <td>
+            <%= image_tag "resizeAvatar.png", :size => '35x25', class: 'avatar', :"data-id" => '1' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (1).png", :size => '35x25', class: 'avatar', :"data-id" => '2' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (2).png", :size => '35x25', class: 'avatar', :"data-id" => '3' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (3).png", :size => '35x25', class: 'avatar', :"data-id" => '4' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "resizeAvatar (4).png", :size => '35x25', class: 'avatar', :"data-id" => '5' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (5).png", :size => '35x25', class: 'avatar', :"data-id" => '6' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (6).png", :size => '35x25', class: 'avatar', :"data-id" => '7' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (7).png", :size => '35x25', class: 'avatar', :"data-id" => '8' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "resizeAvatar (8).png", :size => '35x25', class: 'avatar', :"data-id" => '9' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (9).png", :size => '35x25', class: 'avatar', :"data-id" => '10' %>
+          </td>
+          <td>
+            <%= image_tag "resizeAvatar (10).png", :size => '35x25', class: 'avatar', :"data-id" => '11' %>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-  <div class="field">
-    <p class="email-label">Email</p>
-    <%= current_user.email %>
-  </div>
+    <div class="field">
+      <p class="email-label">Email</p>
+      <%= f.text_field :email, class: "commentsform" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username, class: "commentsform" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off", class: "commentsform" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "commentsform" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "off", class: "commentsform" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "gamenavbuttons" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
+  <h3>Cancel my account</h3>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "gamenavbuttons" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+</div>

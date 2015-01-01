@@ -1,64 +1,86 @@
-<h2>Welcome,</h2>
-<h4>Here's what is trending today</h4>
+<div class="row custom-list">
+  <div class="col-xs-12">
+    <%= form_tag("/search/", method: "get") do %>
+      <%= label_tag(:q, "Game Search:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="jumbo">
+    <h2>Welcome friendos,</h2>
+    <ol>
+      <li>Register profile and add to your lists</li>
+      <li>Check out users with opposite interests</li>
+      <li>Make offers or counteroffers for games</li>
+      <li>Agree hand off before accepting trades</li>
+      <li>Rate counterparty to strengthen trading community!</li>
+      <br>
+    </ol>
+    <h4>Here's what is trending today...</h4>
+  </div>
+</div>
 
 <div class="row">
 
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6 gamelist">
     <div class="row custom-list">
-      <h1>
-        Wanted
+      <h1 class="listtitle">Most Wanted
       </h1>
-    
-    <table id='wanted' class="display" cellspacing="0" width="100%">
-      <thead>
-        <tr class='row'>
-          <th class='col-xs-1'>Pic</th>
-          <th class='col-xs-4'>Title</th>
-          <th class='col-xs-1'>Condition</th>
-          <th class='col-xs-2'>User email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @wanted_games.each do |usergame| %>
-          <tr class="row">
-            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
-            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
-            <td class="col-xs-1"><%= usergame.condition %></td>
-            <td class="col-xs-2"><%= usergame.user.email %></td>
+      <table id='top-wanted' class="display table table-border table-condensed tablesorter gametable" cellspacing="0" width="100%">
+        <thead>
+          <tr class='row wantrow'>
+            <th class='col-xs-1'>Pic</th>
+            <th class='col-xs-5'>Title</th>
+            <th class='col-xs-3'>Console</th>
+            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-2'># of Users</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @wanted_games.each do |game| %>
+            <tr class="row wantrow">
+              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
+              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= game.name %><% end %></td>
+              <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
+              <td class="col-xs-1 gamelisttext"><%= game.version %></td>
+              <td class="col-xs-2 gamelisttext"><%= game.user_games.where({wantgive: :'w'}).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6 gamelist">
     <div class="row custom-list">
-      <h1>
-        Given
+      <h1 class="listtitle">Most Given
       </h1>
-    
-    <table id='given' class="display" cellspacing="0" width="100%">
-      <thead>
-        <tr class='row'>
-          <th class='col-xs-1'>Pic</th>
-          <th class='col-xs-4'>Title</th>
-          <th class='col-xs-1'>Condition</th>
-          <th class='col-xs-2'>User email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @given_games.each do |usergame| %>
-          <tr class="row">
-            <td class="col-xs-1" ><%= image_tag usergame.game.image, :size => '90x70'  %></td>
-            <td class="col-xs-4 gamelisttitle"><%= usergame.game.name %></td>
-            <td class="col-xs-1"><%= usergame.condition %></td>
-            <td class="col-xs-2"><%= usergame.user.email %></td>
+      <table id='top-given' class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+        <thead>
+          <tr class='row giverow'>
+            <th class='col-xs-1'>Pic</th>
+            <th class='col-xs-5'>Title</th>
+            <th class='col-xs-3'>Console</th>
+            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-2 hihi'># of Users</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+       
+        <tbody>
+          <% @given_games.each do |game| %>
+            <tr class="row giverow">
+              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
+              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= game.name %><% end %></td>
+              <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
+              <td class="col-xs-1 gamelisttext"><%= game.version %></td>
+              <td class="col-xs-2 gamelisttext"><%= game.user_games.where({wantgive: :'g'}).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-
 </div>

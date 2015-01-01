@@ -1,0 +1,36 @@
+<% if @results.length > 0 %>
+  <div class="jumbo">
+    <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+      <thead>
+        <tr class="row">
+          <th class="col-xs-1">Pic</th>
+          <th class="col-xs-5">Title</th>
+          <th class="col-xs-2">Console</th>
+          <th class="col-xs-2">Locale</th>
+          <th class="col-xs-3">Genre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |game| %>
+          <tr class="row">
+            <td class="col-xs-1"><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
+            <td class="col-xs-5"><%= link_to game do %><%= game.name %><% end %></td>
+            <td class="col-xs-2"><%= game.compatible %></td>
+            <td class="col-xs-2"><%= game.version %></td>
+            <td class="col-xs-3"><%= game.genre %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<% else %>
+
+  <div class="jumbo">
+    <div  id="emptysearch" class="row">
+      <h3 class="col-xs-offset-1 col-xs-10">Sorry, we couldn't find what you were looking for...</h3>  
+      <h5 class="col-xs-offset-1 col-xs-10">Please try again with another keyword</h5>
+    </div>
+  </div>
+  
+<% end %>

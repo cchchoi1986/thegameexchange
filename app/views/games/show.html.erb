@@ -1,0 +1,81 @@
+<div class="row custom-list">
+  <div class="col-xs-12">
+    <%= form_tag("/search/", method: "get") do %>
+      <%= label_tag(:q, "Game Search:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="jumbo">
+  <h2>Title: <%= @game.name %></h2>
+  <%= image_tag @game.image, :size => '200x170' %>
+  <%= button_to "Add to My Wanted", "#", class: "wantbutton" %>
+  <%= button_to "Add to My Given", "#", class: "givebutton" %>
+  <h4>Release Date: <%= @game.release_date %></h4>
+  <h4>Console: <%= @game.compatible %></h4>
+  <h4>Genre: <%= @game.genre %></h4>
+  <h6>Version: <%= @game.version %></h6>
+  <h6>Encoding: <%= @game.encoding %></h6>
+  <h6>URL: <%= link_to @game.url, @game.url %></h6>
+  <h6>Manufacturer: <%= @game.manufacturer %></h6>
+  <% prevgame = @game.id-1 %>
+  <% nextgame = @game.id+1 %>
+  <%= button_to "<< Previous Game ", "#{prevgame}", method: :get, class: "gamenavbuttons" %>
+  <%= button_to " Next Game >>", "#{nextgame}", method: :get, class: "gamenavbuttons" %>
+</div>
+
+<div class="custom-list">
+    <% if @listwantedusers.length > 0 %>
+      <h2 class="listtitle">Wamted by:</h2>
+      <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+        <thead>
+          <tr class="row wantrow">
+            <th class="col-xs-1">Profile</th>
+            <th class="col-xs-5">Username</th>
+            <th class="col-xs-2">Email</th>
+            <th class="col-xs-2">Want/Give</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @listwantedusers.each do |user| %>
+            <tr class="row wantrow">
+              <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
+              <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
+              <td class="col-xs-2"><%= user.email %></td>
+              <td class="col-xs-2"><% %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h4>Currently no one wants this game</h4>
+    <% end %>
+
+    <% if @listgivenusers.length > 0 %>
+      <h2 class="listtitle">Given by:</h2>
+      <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+        <thead>
+          <tr class="row giverow">
+            <th class="col-xs-1">Profile</th>
+            <th class="col-xs-5">Username</th>
+            <th class="col-xs-2">Email</th>
+            <th class="col-xs-2">Want/Give</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @listgivenusers.each do |user| %>
+            <tr class="row giverow">
+              <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
+              <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
+              <td class="col-xs-2"><%= link_to user do %><%= user.email %><% end %></td>
+              <td class="col-xs-2"><% %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h4>Currently no one is willing to give up this game</h4>
+    <% end %>
+  </div>

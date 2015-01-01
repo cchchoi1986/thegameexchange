@@ -1,10 +1,33 @@
 .body {
-  background-color: #666;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ), image-url('pattern_036.gif');
 }
 
 .navbar-brand {
   // overflow: hidden;
 }
+
+// font-family: 'Knewave', cursive;
+// font-family: 'Permanent Marker', cursive; +
+// font-family: 'Trade Winds', cursive;
+// font-family: 'Vast Shadow', cursive;
+// font-family: 'Ruslan Display', cursive; +
+// font-family: 'Fugaz One', cursive;
+// font-family: 'Holtwood One SC', serif;
+// font-family: 'Sigmar One', cursive;
+// font-family: 'Monofett', cursive; ++
+// font-family: 'Ceviche One', cursive;
+// font-family: 'Black Ops One', cursive;
+// font-family: 'VT323';
+// font-family: 'Press Start 2P', cursive;
+// font-family: 'Sancreek', cursive;
+// font-family: 'Freckle Face', cursive; +
+// font-family: 'Rock Salt', cursive;
+// font-family: 'Griffy', cursive;
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -20,6 +43,11 @@ html {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: orange;
+  // background: 
+  //   linear-gradient(
+  //     rgba(0, 0, 0, 0.45), 
+  //     rgba(0, 0, 0, 0.45)
+  //   ), image-url('pattern_009.gif');
 }
 
 
@@ -46,6 +74,11 @@ code {
 
 .navbar.navbar-default.navbar-fixed-top{
   background: orange;
+  // background: 
+  //   linear-gradient(
+  //     rgba(0, 0, 0, 0.45), 
+  //     rgba(0, 0, 0, 0.45)
+  //   ), image-url('pattern_009.gif');
 }
 
 .gamelist {
@@ -54,36 +87,40 @@ code {
 
 .custom-list {
   background: #999;
-  padding-left: 30px;
-  border: 2px solid black;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  color: black;
+  padding-left: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 2px;
 }
 
 #custom-logo {
-  font-size: 28px;
+  font-family: 'Freckle Face', cursive;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  #custom-logo {
+    font-size: 34px;
+  }
 }
 
 @media (min-width: 768px) {
   #custom-logo {
-    font-size: 38px;
+    font-size: 50px;
   }
 }
 
 @media (min-width: 992px) {
   #custom-logo {
-    font-size: 38px;
+    font-size: 52px;
   }
 }
 
 @media (min-width: 1200px) {
   #custom-logo {
-    font-size: 38px;
+    font-size: 55px;
   }
-}
-
-#navbar {
-  // background: #E3A62B;
 }
 
 #userprofile {
@@ -103,6 +140,112 @@ code {
   // padding: 2px;
 }
 
-.gamelisttitle {
-  overflow: hidden;
+.gamelisttext {
+  font-size: 12px;
+}
+
+#header {
+  border: 2px solid white;
+}
+
+.footer {
+  border: 2px solid white;
+}
+
+.listtitle {
+  font-family: 'Holtwood One SC', serif;
+  font-size: 28px;
+}
+
+#profile {
+  background: white;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 4px;
+}
+
+.jumbo {
+  border-radius: 10px;
+  color: #fff;
+  border: 2px solid #fff;
+  background: #000;
+  padding: 5px;
+  margin: 5px;
+}
+
+.gamenavbuttons {
+  background: orange;
+  color: black;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 10px;
+  border: 1px solid white;
+  display: inline;
+}
+
+.wantbutton {
+  background: #123102;
+  color: white;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 10px;
+  border: 1px solid white;
+  display: inline;
+}
+
+.givebutton {
+  background: #412100;
+  color: white;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 10px;
+  border: 1px solid white;
+  display: inline;
+}
+
+// DASHBOARD
+
+#top-wanted > tbody > tr:nth-child(n+11) {
+  display: none;
+}
+
+.nextprevgamebutton {
+  color: black;
+}
+
+.removebutton {
+  color: orange;
+  font-weight: bolder;
+  background: #444;
+}
+
+.commentsform {
+  color: black;
+}
+
+.avatar {
+  padding: 2px;
+}
+
+.highlight {
+  background: yellow;
+}
+
+.gamerow {
+  background: black;
+  color: white;
+}
+
+.wantrow {
+  background: #123102;
+  color: white;
+}
+
+.giverow {
+  background: #412100;
+  color: white;
+}
+
+.gametable {
+  border: 1px solid white;
 }
