@@ -1,0 +1,35 @@
+<div class="user_comment">
+  <%= form_for @comment, :method => :post do |f| %>
+    <% f.label :title %>
+    <% f.text_field :title, class: "commentsform" %>
+
+    <%= f.label "Message:" %>
+    <%= f.text_field :content, class: "commentsform" %>
+
+    <%= f.number_field :wall_id, :value => @user.id, class: "commentsform", :hidden => true %>
+
+    <%= f.text_field :user_id, :value => current_user, class: "commentsform", :hidden => true %>
+
+    <%= f.submit "Submit", class: "gamenavbuttons" %>
+  <% end %>
+</div>
+<table id="user-comments" class="display">
+  <thead>
+    <tr class='row'>
+      <th class='col-xs-3'>From</th>
+      <th class='col-xs-6'>Message</th>
+      <th class='col-xs-1'>Created ago</th>
+      <th class='col-xs-1'>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.reverse.each do |comment| %>
+      <tr class="row">
+        <td class="col-xs-3 gamelisttext"><%= link_to comment.user do %><%= comment.user.username %><% end %></td>
+        <td class="col-xs-6 gamelisttext commentbubble"><%= comment.content %></td>
+        <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
+        <td class="col-xs-1"><%= button_to "X", user_game_path, method: :delete, class: "removebutton" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

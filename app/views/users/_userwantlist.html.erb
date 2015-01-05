@@ -1,0 +1,67 @@
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
+  <div class="row custom-list">
+    <% if @wanted_game.length > 0 %>
+      <h1 class="listtitle">WANTED
+      </h1>
+      <table id='wanted' class="display table table-border table-condensed" cellspacing="0" width="100%">
+        <thead>
+          <tr class='row wantrow'>
+            <th class='col-xs-1'>Pic</th>
+            <th class='col-xs-4'>Title</th>
+            <th class='col-xs-2'>Console</th>
+            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-3'>Condition</th>
+            <% if @user.id == current_user.id%>
+              <th class='col-xs-1'>Remove</th>
+            <% else %>
+              <th class='col-xs-1'>Offer</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @wanted_game.each do |usergame| %>
+            <tr class="row wantrow">
+              <td class="col-xs-1" ><%= link_to usergame.game do %><%= image_tag usergame.game.image, :size => '70x50'  %><% end %></td>
+              <td class="col-xs-4 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 33) %><% end %></td>
+              <td class="col-xs-2 gamelisttext"><%= usergame.game.compatible %></td>
+              <td class="col-xs-1 gamelisttext"><%= usergame.game.version %></td>
+              <td class="col-xs-3 gamelisttext"><%= usergame.condition %></td>
+              <% if @user.id == current_user.id%>
+                <td class="col-xs-1"><%= button_to "X", self.user_game_path, method: :delete, class: "removebutton" %></td>
+              <% else %>
+                <td>
+                  <button type="button" class="gamenavbuttons" data-toggle="modal" data-target="#myModal">
+                    Offer
+                  </button>
+                </td>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                        
+
+                        <button type="button" class="btn selectwant">Want!</button>
+                        <button type="button" class="btn selectgive">Give!</button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn gamenavbuttons">Add to List!</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h4>Currently user wants no games</h4>
+    <% end %>
+  </div>
+  
+</div>

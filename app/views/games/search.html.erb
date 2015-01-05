@@ -1,3 +1,15 @@
+<div class="custom-list">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag("/search/", method: "get") do %>
+        <%= label_tag(:q, "Game Search:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <% if @results.length > 0 %>
   <div class="jumbo">
     <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
@@ -34,3 +46,15 @@
   </div>
   
 <% end %>
+
+<div class="custom-list">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag("/search/", method: "get") do %>
+        <%= label_tag(:q, "Game Search:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</div>

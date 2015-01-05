@@ -5,14 +5,17 @@ class CommentsController < ApplicationController
     # binding.pry
     comment = current_user.comments.new(comment_params)
     if comment.save
-      redirect_to comment.post
+      redirect_to comment.user
     else
       redirect_to :back
     end
   end
 
+  def destroy
+  end
+
   private
     def comment_params
-      params.require(:comment).permit(:content, ,:title, :user_id, :wall_id)
+      params.require(:comment).permit(:content, :title, :user_id, :wall_id)
     end
 end

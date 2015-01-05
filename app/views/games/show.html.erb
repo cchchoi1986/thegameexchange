@@ -1,18 +1,88 @@
-<div class="row custom-list">
-  <div class="col-xs-12">
-    <%= form_tag("/search/", method: "get") do %>
-      <%= label_tag(:q, "Game Search:") %>
-      <%= text_field_tag(:q) %>
-      <%= submit_tag("Search") %>
-    <% end %>
+<div class="custom-list">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag("/search/", method: "get") do %>
+        <%= label_tag(:q, "Game Search:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="jumbo">
   <h2>Title: <%= @game.name %></h2>
   <%= image_tag @game.image, :size => '200x170' %>
-  <%= button_to "Add to My Wanted", "#", class: "wantbutton" %>
-  <%= button_to "Add to My Given", "#", class: "givebutton" %>
+    <!-- Button trigger modal -->
+  <button type="button" class="gamenavbuttons" data-toggle="modal" data-target="#myModal">
+    Add to My Lists
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        
+          <%= form_for @user_games, :method => :post do |f| %>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3><%= f.label @game.name, class: "commentsform" %></h3>
+              <!-- <h5 class="modal-title cc-modal-title" id="myModalLabel">Add Game to list</h5> -->
+            </div>
+            <div class="modal-body">
+              
+              <%= f.text_field :user_id, :value => current_user.id, class: "commentsform", :hidden => true %>
+              <table class="commentsform table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Condition ID</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>New and unused</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Used and in good condition</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Damaged case</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>No case</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Scratches on disc</td>
+                  </tr>
+                </tbody>
+              </table>
+              <%= f.label :condition, class: "commentsform" %>
+              <%= f.number_field :condition, :value => 2, class: "commentsform" %>
+
+              <%= f.text_field :game_id, :value => @game.id, class: "commentsform", :hidden => true %>
+
+              <%= f.text_field :wantgive, class: "commentsform wantgiveform", :hidden => true %>
+
+              <button type="button" class="btn selectwant">Want!</button>
+              <button type="button" class="btn selectgive">Give!</button>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn gamenavbuttons">Add to List!</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          <% end %>
+        
+        
+      </div>
+    </div>
+  </div>
   <h4>Release Date: <%= @game.release_date %></h4>
   <h4>Console: <%= @game.compatible %></h4>
   <h4>Genre: <%= @game.genre %></h4>
@@ -27,55 +97,76 @@
 </div>
 
 <div class="custom-list">
-    <% if @listwantedusers.length > 0 %>
-      <h2 class="listtitle">Wamted by:</h2>
-      <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
-        <thead>
-          <tr class="row wantrow">
-            <th class="col-xs-1">Profile</th>
-            <th class="col-xs-5">Username</th>
-            <th class="col-xs-2">Email</th>
-            <th class="col-xs-2">Want/Give</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @listwantedusers.each do |user| %>
+  <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
+    <div class="row">
+      <% if @listwantedusers.length > 0 %>
+        <h2 class="listtitle">Wanted by:</h2>
+        <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+          <thead>
             <tr class="row wantrow">
-              <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
-              <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
-              <td class="col-xs-2"><%= user.email %></td>
-              <td class="col-xs-2"><% %></td>
+              <th class="col-xs-1">Profile</th>
+              <th class="col-xs-5">Username</th>
+              <th class="col-xs-2">Email</th>
+              <th class="col-xs-2">Want/Give</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <h4>Currently no one wants this game</h4>
-    <% end %>
-
-    <% if @listgivenusers.length > 0 %>
-      <h2 class="listtitle">Given by:</h2>
-      <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
-        <thead>
-          <tr class="row giverow">
-            <th class="col-xs-1">Profile</th>
-            <th class="col-xs-5">Username</th>
-            <th class="col-xs-2">Email</th>
-            <th class="col-xs-2">Want/Give</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @listgivenusers.each do |user| %>
-            <tr class="row giverow">
-              <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
-              <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
-              <td class="col-xs-2"><%= link_to user do %><%= user.email %><% end %></td>
-              <td class="col-xs-2"><% %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <h4>Currently no one is willing to give up this game</h4>
-    <% end %>
+          </thead>
+          <tbody>
+            <% @listwantedusers.each do |user| %>
+              <tr class="row wantrow">
+                <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
+                <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
+                <td class="col-xs-2"><%= user.email %></td>
+                <td class="col-xs-2"><% %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h4>Currently no one wants this game</h4>
+      <% end %>
+    </div>
   </div>
+
+  <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
+    <div class="row">
+      <% if @listgivenusers.length > 0 %>
+        <h2 class="listtitle">Given by:</h2>
+        <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+          <thead>
+            <tr class="row giverow">
+              <th class="col-xs-1">Profile</th>
+              <th class="col-xs-5">Username</th>
+              <th class="col-xs-2">Email</th>
+              <th class="col-xs-2">Want/Give</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @listgivenusers.each do |user| %>
+              <tr class="row giverow">
+                <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
+                <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
+                <td class="col-xs-2"><%= link_to user do %><%= user.email %><% end %></td>
+                <td class="col-xs-2"><% %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h4>Currently no one is willing to give up this game</h4>
+      <% end %>
+    </div>
+  </div>
+  <div class="row"></div>
+</div>
+
+<div class="custom-list">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag("/search/", method: "get") do %>
+        <%= label_tag(:q, "Game Search:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</div>

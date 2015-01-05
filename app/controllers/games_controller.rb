@@ -13,6 +13,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @listwantedusers = User.includes(:user_games).where(:user_games => {:game_id=>params[:id], :wantgive=>'w'})
     @listgivenusers = User.includes(:user_games).where(:user_games => {:game_id=>params[:id], :wantgive=>'g'})
+    @user_games = UserGame.new
   end
 
 

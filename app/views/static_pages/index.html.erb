@@ -12,14 +12,14 @@
   <div class="jumbo">
     <h2>Welcome friendos,</h2>
     <ol>
-      <li>Register profile and add to your lists</li>
+      <li><a href="#">Register</a> profile and add to your lists</li>
       <li>Check out users with opposite interests</li>
       <li>Make offers or counteroffers for games</li>
       <li>Agree hand off before accepting trades</li>
       <li>Rate counterparty to strengthen trading community!</li>
       <br>
     </ol>
-    <h4>Here's what is trending today...</h4>
+    <h4>Here is what's trending today...</h4>
   </div>
 </div>
 
@@ -36,7 +36,7 @@
             <th class='col-xs-5'>Title</th>
             <th class='col-xs-3'>Console</th>
             <th class='col-xs-1'>Locale</th>
-            <th class='col-xs-2'># of Users</th>
+            <th class='col-xs-2 numusers'># of Users</th>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@
             <th class='col-xs-5'>Title</th>
             <th class='col-xs-3'>Console</th>
             <th class='col-xs-1'>Locale</th>
-            <th class='col-xs-2 hihi'># of Users</th>
+            <th class='col-xs-2 numusers'># of Users</th>
           </tr>
         </thead>
        
@@ -82,5 +82,15 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div class="row custom-list">
+  <div class="col-xs-12">
+    <%= form_tag("/search/", method: "get") do %>
+      <%= label_tag(:q, "Game Search:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
   </div>
 </div>
