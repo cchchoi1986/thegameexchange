@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/search' => 'games#search'
   resources :games
   resources :user_games
-  resources :comments
+  # resources :comments
+  post '/comments' => 'comments#create'
+  delete '/comments/:id' => 'comments#destroy'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

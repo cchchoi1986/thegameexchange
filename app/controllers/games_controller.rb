@@ -6,7 +6,13 @@ class GamesController < ApplicationController
   # end
   def search
     search_term = params[:q]
+    # @results = Game.all
+    # for i in 0..array.length
+    #   @results = @results.where('name like ?', "%"+array[i]+"%")
+    # end
+
     @results = Game.where('name like ?', "%"+search_term+"%")
+    # @results = Game.where('name like ?', "%call%").where('name like ?', "%duty: Black Ops%").where(version: "Asia").where(compatible: "Xbox360 (360)")
   end
   
   def show

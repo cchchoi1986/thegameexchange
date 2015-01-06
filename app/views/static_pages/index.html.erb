@@ -35,7 +35,7 @@
             <th class='col-xs-1'>Pic</th>
             <th class='col-xs-5'>Title</th>
             <th class='col-xs-3'>Console</th>
-            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-1'>Encoding</th>
             <th class='col-xs-2 numusers'># of Users</th>
           </tr>
         </thead>
@@ -43,9 +43,9 @@
           <% @wanted_games.each do |game| %>
             <tr class="row wantrow">
               <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
-              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= game.name %><% end %></td>
+              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= truncate(game.name, length: 44) %><% end %></td>
               <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
-              <td class="col-xs-1 gamelisttext"><%= game.version %></td>
+              <td class="col-xs-1 gamelisttext"><%= game.encoding %></td>
               <td class="col-xs-2 gamelisttext"><%= game.user_games.where({wantgive: :'w'}).count %></td>
             </tr>
           <% end %>
@@ -64,7 +64,7 @@
             <th class='col-xs-1'>Pic</th>
             <th class='col-xs-5'>Title</th>
             <th class='col-xs-3'>Console</th>
-            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-1'>Encoding</th>
             <th class='col-xs-2 numusers'># of Users</th>
           </tr>
         </thead>
@@ -73,9 +73,9 @@
           <% @given_games.each do |game| %>
             <tr class="row giverow">
               <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
-              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= game.name %><% end %></td>
+              <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= truncate(game.name, length: 44) %><% end %></td>
               <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
-              <td class="col-xs-1 gamelisttext"><%= game.version %></td>
+              <td class="col-xs-1 gamelisttext"><%= game.encoding %></td>
               <td class="col-xs-2 gamelisttext"><%= game.user_games.where({wantgive: :'g'}).count %></td>
             </tr>
           <% end %>

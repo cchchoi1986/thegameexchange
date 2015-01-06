@@ -1,3 +1,18 @@
-// Place all the styles related to the games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.gamerow {
+  background: black;
+  color: white;
+}
+
+.wantrow {
+  background: #123102;
+  color: white;
+}
+
+.giverow {
+  background: #412100;
+  color: white;
+}
+
+.gametable {
+  border: 1px solid white;
+}

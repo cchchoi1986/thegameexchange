@@ -7,9 +7,9 @@
         <thead>
           <tr class='row wantrow'>
             <th class='col-xs-1'>Pic</th>
-            <th class='col-xs-4'>Title</th>
+            <th class='col-xs-5'>Title</th>
             <th class='col-xs-2'>Console</th>
-            <th class='col-xs-1'>Locale</th>
+            <th class='col-xs-2'>Encoding</th>
             <th class='col-xs-3'>Condition</th>
             <% if @user.id == current_user.id%>
               <th class='col-xs-1'>Remove</th>
@@ -22,12 +22,12 @@
           <% @wanted_game.each do |usergame| %>
             <tr class="row wantrow">
               <td class="col-xs-1" ><%= link_to usergame.game do %><%= image_tag usergame.game.image, :size => '70x50'  %><% end %></td>
-              <td class="col-xs-4 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 33) %><% end %></td>
+              <td class="col-xs-5 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 44) %><% end %></td>
               <td class="col-xs-2 gamelisttext"><%= usergame.game.compatible %></td>
-              <td class="col-xs-1 gamelisttext"><%= usergame.game.version %></td>
-              <td class="col-xs-3 gamelisttext"><%= usergame.condition %></td>
+              <td class="col-xs-2 gamelisttext"><%= usergame.game.encoding %></td>
+              <td class="col-xs-1 gamelisttext"><%= usergame.condition %></td>
               <% if @user.id == current_user.id%>
-                <td class="col-xs-1"><%= button_to "X", self.user_game_path, method: :delete, class: "removebutton" %></td>
+                <td class="col-xs-1"><button class="removebutton" data-id="<%= usergame.id %>">X</button></td>
               <% else %>
                 <td>
                   <button type="button" class="gamenavbuttons" data-toggle="modal" data-target="#myModal">

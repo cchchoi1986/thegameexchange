@@ -1,15 +1,14 @@
 <%= render "users/searchbar" %>
 
 <div class="jumbo row">
-  <h2><%= @user.avatar_id %></h2>
+  <%= image_tag @user.avatar_id, :size => '55x45', class: 'avatar' %>
   <h2><%= @user.username %></h2>
-  <h5><%= @user.email %></h5>
+  <h5><% @user.email %></h5>
   <%= render "users/commentsection" %>
 </div>
 
 <div class="row">
 
-  <% list = @wanted_game %>
   <%= render "users/userwantlist" %>
 
   <%= render "users/usergivelist" %>

@@ -140,9 +140,6 @@ code {
   // padding: 2px;
 }
 
-.gamelisttext {
-  font-size: 12px;
-}
 
 #header {
   border: 2px solid white;
@@ -231,25 +228,6 @@ code {
   background: yellow;
 }
 
-.gamerow {
-  background: black;
-  color: white;
-}
-
-.wantrow {
-  background: #123102;
-  color: white;
-}
-
-.giverow {
-  background: #412100;
-  color: white;
-}
-
-.gametable {
-  border: 1px solid white;
-}
-
 #cc-home {
   color:black;
 }
@@ -260,15 +238,4 @@ code {
 
 .cc-modal-title{
   color: black;
-}
-
-.commentbubble {
-  background: white;
-  color: black;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-.commentrow {
-  padding: 3px 0 3px 0;
 }

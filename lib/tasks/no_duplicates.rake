@@ -5,13 +5,20 @@ namespace :no_duplicates do
 
     dbindex = 1
 
-    while dbindex < Game.all.length do
-      if Game.where({pax: Game.find(dbindex).pax}).length > 1
-        puts dbindex
-        dbindex+=1
+    Game.all.each do |game|
+      if Game.where({pax: game.pax}).length > 1
+        puts game.name
       end
-      dbindex+=1
     end
 
   end
 end
+
+# Game.all.group(:pax).having("count(*) > 1").each do |g|
+#   Game.find(:pax => g.pax).destroy
+# end
+
+
+# Game.all.group(:pax).having("count(*) > 1").count.each do |key, value|
+#   Game.find_by_pax(key).destroy
+# end

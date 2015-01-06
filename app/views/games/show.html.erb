@@ -32,7 +32,7 @@
             </div>
             <div class="modal-body">
               
-              <%= f.text_field :user_id, :value => current_user.id, class: "commentsform", :hidden => true %>
+              <%= f.text_field :user_id, :value => current_user.id, class: "commentsform user_game_user_id", :hidden => true %>
               <table class="commentsform table table-condensed">
                 <thead>
                   <tr>
@@ -64,17 +64,17 @@
                 </tbody>
               </table>
               <%= f.label :condition, class: "commentsform" %>
-              <%= f.number_field :condition, :value => 2, class: "commentsform" %>
+              <%= f.number_field :condition, :value => 2, class: "commentsform user_game_condition" %>
 
-              <%= f.text_field :game_id, :value => @game.id, class: "commentsform", :hidden => true %>
+              <%= f.text_field :game_id, :value => @game.id, class: "commentsform user_game_game_id", :hidden => true %>
 
-              <%= f.text_field :wantgive, class: "commentsform wantgiveform", :hidden => true %>
+              <%= f.text_field :wantgive, class: "commentsform user_game_wantgive", :hidden => true %>
 
               <button type="button" class="btn selectwant">Want!</button>
               <button type="button" class="btn selectgive">Give!</button>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn gamenavbuttons">Add to List!</button>
+              <button type="submit" id="add_user_game" class="btn gamenavbuttons">Add to List!</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           <% end %>
@@ -104,19 +104,19 @@
         <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
           <thead>
             <tr class="row wantrow">
-              <th class="col-xs-1">Profile</th>
-              <th class="col-xs-5">Username</th>
-              <th class="col-xs-2">Email</th>
-              <th class="col-xs-2">Want/Give</th>
+              <th class="col-xs-3"></th>
+              <th class="col-xs-3">Username</th>
+              <th class="col-xs-3">Email</th>
+              <th class="col-xs-3">Location</th>
             </tr>
           </thead>
           <tbody>
             <% @listwantedusers.each do |user| %>
               <tr class="row wantrow">
-                <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
-                <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
-                <td class="col-xs-2"><%= user.email %></td>
-                <td class="col-xs-2"><% %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= image_tag user.avatar_id, :size => '35x25', class: 'avatar' %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.username %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.email %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.location %><% end %></td>
               </tr>
             <% end %>
           </tbody>
@@ -134,19 +134,19 @@
         <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
           <thead>
             <tr class="row giverow">
-              <th class="col-xs-1">Profile</th>
-              <th class="col-xs-5">Username</th>
-              <th class="col-xs-2">Email</th>
-              <th class="col-xs-2">Want/Give</th>
+              <th class="col-xs-3"></th>
+              <th class="col-xs-3">Username</th>
+              <th class="col-xs-3">Email</th>
+              <th class="col-xs-3">Location</th>
             </tr>
           </thead>
           <tbody>
             <% @listgivenusers.each do |user| %>
               <tr class="row giverow">
-                <td class="col-xs-1"><%= link_to user do %><%= user.avatar_id %><% end %></td>
-                <td class="col-xs-5"><%= link_to user do %><%= user.username %><% end %></td>
-                <td class="col-xs-2"><%= link_to user do %><%= user.email %><% end %></td>
-                <td class="col-xs-2"><% %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= image_tag user.avatar_id, :size => '35x25', class: 'avatar' %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.username %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.email %><% end %></td>
+                <td class="col-xs-3"><%= link_to user do %><%= user.location %><% end %></td>
               </tr>
             <% end %>
           </tbody>

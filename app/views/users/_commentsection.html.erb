@@ -1,34 +1,42 @@
-<div class="user_comment">
-  <%= form_for @comment, :method => :post do |f| %>
-    <% f.label :title %>
-    <% f.text_field :title, class: "commentsform" %>
-
+<div>
+  <%= form_for @comment, :remote => true do |f| %>
+   
     <%= f.label "Message:" %>
     <%= f.text_field :content, class: "commentsform" %>
 
     <%= f.number_field :wall_id, :value => @user.id, class: "commentsform", :hidden => true %>
 
-    <%= f.text_field :user_id, :value => current_user, class: "commentsform", :hidden => true %>
-
-    <%= f.submit "Submit", class: "gamenavbuttons" %>
+    <%= f.submit "Submit", id: "new_comment", class: "gamenavbuttons" %>
   <% end %>
 </div>
-<table id="user-comments" class="display">
+<table id="user-comments" class="table table-condensed">
   <thead>
-    <tr class='row'>
-      <th class='col-xs-3'>From</th>
-      <th class='col-xs-6'>Message</th>
-      <th class='col-xs-1'>Created ago</th>
-      <th class='col-xs-1'>Remove</th>
+    <tr class="row-fluid">
+      <th class='col-xs-1'></th>
+      <th class='col-xs-2'>From</th>
+      <% if @user.id == current_user.id%>
+        <th class='col-xs-6'>Message</th>
+        <th class='col-xs-2'>Created ago</th>
+        <th class='col-xs-1'></th>
+      <% else %>
+        <th class='col-xs-8'>Message</th>
+        <th class='col-xs-2'>Created ago</th>
+      <% end %>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="comments-body">
     <% @comments.reverse.each do |comment| %>
-      <tr class="row">
-        <td class="col-xs-3 gamelisttext"><%= link_to comment.user do %><%= comment.user.username %><% end %></td>
-        <td class="col-xs-6 gamelisttext commentbubble"><%= comment.content %></td>
-        <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
-        <td class="col-xs-1"><%= button_to "X", user_game_path, method: :delete, class: "removebutton" %></td>
+      <tr class="row-fluid">
+        <td class="col-xs-1"><%= link_to comment.user do %><%= image_tag comment.user.avatar_id, :size => '35x25', class: 'avatar' %><% end %></td>
+        <td class="col-xs-2 gamelisttext"><%= link_to comment.user do %><%= comment.user.username %><% end %></td>
+        <% if @user.id == current_user.id%>
+          <td class="col-xs-6 gamelisttext commentbubble"><%= comment.content %></td>
+          <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
+          <td class="col-xs-1"><button class="removebutton removecomment" data-id="<%= comment.id %>">X</button></td>
+        <% else %>
+          <td class="col-xs-7 gamelisttext commentbubble"><%= comment.content %></td>
+          <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
