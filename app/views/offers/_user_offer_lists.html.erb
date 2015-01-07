@@ -1,0 +1,22 @@
+<table class="display table table-border table-condensed tablesorter gametable" style="margin-bottom:0;">
+  <thead>
+    <tr class='row offerrow'>
+      <th class='col-xs-2'>Pic</th>
+      <th class='col-xs-7'>Title</th>
+      <th class='col-xs-3'>Details</th>
+    </tr>
+  </thead>
+</table>
+<div class="test">
+  <table class="display table table-border table-condensed tablesorter gametable" style="margin-bottom:0;">
+    <tbody>
+      <% usergames.each do |usergame| %>
+        <tr class="row offerrow">
+          <td class="col-xs-2" ><%= link_to usergame.game do %><%= image_tag usergame.game.image, :size => '40x30'  %><% end %></td>
+          <td class="col-xs-7 gamelisttext"><%= link_to usergame.game do %><%= truncate(usergame.game.name, length: 28) %><% end %></td>
+          <td class="col-xs-3 gamelisttext"><%= usergame.game.compatible %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

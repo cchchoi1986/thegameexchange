@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     @comment = Comment.new
   end
 
+  def update
+    @user = current_user
+    @user.update(:avatar => params[:user][:avatar])
+    redirect_to :back
+  end
+
   def search
     @games_users_w = User.includes(:user_games).where.not(:user_games => {:user_id=>nil, :wantgive=>'w'})
   end

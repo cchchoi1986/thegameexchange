@@ -47,3 +47,5 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'nokogiri'
 gem 'pry'
+gem 'paperclip', '~> 4.2'
+gem 'dotenv-rails', :groups => [:development, :test]

@@ -1,7 +1,7 @@
 <%= render "users/searchbar" %>
 
 <div class="jumbo row">
-  <%= image_tag @user.avatar_id, :size => '55x45', class: 'avatar' %>
+  <%= image_tag @user.avatar.url %>
   <h2><%= @user.username %></h2>
   <!-- <h5><%= @user.email %></h5> -->
   <%= render "users/commentsection" %>

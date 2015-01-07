@@ -6,9 +6,7 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label "Pick an Avatar" %><br />
-      <%= f.text_field :avatar_id, id: "avatar_id", hidden: true  %>
-      <table>
+      <!-- <table>
         <tr>
           <td>
             <%= image_tag "avatar1.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar1.png' %>
@@ -48,7 +46,11 @@
             <%= image_tag "avatar11.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar11.png' %>
           </td>
         </tr>
-      </table>
+      </table> -->
+      <%= image_tag @user.avatar.url %>
+      <%= f.label 'Profile Pic' %>
+      <%= f.file_field :avatar %>
+      <% f.submit 'Upload', class: "commentsform" %>
     </div>
 
     <div class="field">
