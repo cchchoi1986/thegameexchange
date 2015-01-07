@@ -49,3 +49,4 @@ gem 'nokogiri'
 gem 'pry'
 gem 'paperclip', '~> 4.2'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'aws-sdk', '~> 1.5.7'
