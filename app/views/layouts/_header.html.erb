@@ -15,7 +15,7 @@
           <%= link_to " Home", "/", :id => "cc-home", :class => "glyphicon glyphicon-home" %>
         </li>
         <li class="dropdown <%= 'active' if params[:controller] == 'users' %>">
-          <a href="#" id="cc-profile" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">
+          <a href="#" id="cc-profile" class="dropdown-toggle glyphicon glyphicon-user font-black" data-toggle="dropdown" role="button" aria-expanded="false">
             <% if current_user %>
               <%= current_user.username %>
             <% else %>
@@ -23,16 +23,16 @@
             <% end %>
 
           <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu font-black" role="menu">
             <% if current_user %>
                   <!-- default :method is :POST for button_to -->
-                <li><%= link_to "My Profile", "/users" %></li>
+                <li><%= link_to "My Profile", "/users", :class => "font-black" %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Edit Profile", edit_user_registration_path, :method => :get, :id => 'profile-options' %></li>
-                <li><%= link_to "Sign out", destroy_user_session_path, :method =>  :delete, :id => 'profile-options' %></li>
+                <li><%= link_to "Edit Profile", edit_user_registration_path, :method => :get, :id => 'profile-options', :class => "font-black" %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, :method =>  :delete, :id => 'profile-options', :class => "font-black" %></li>
             <% else %>
-                <li><%= link_to "Register", new_user_registration_path, :id => 'profile-options' %></li>
-                <li><%= link_to "Login", new_user_session_path, :id => 'profile-options' %></li>
+                <li><%= link_to "Register", new_user_registration_path, :id => 'profile-options', :class => "font-black" %></li>
+                <li><%= link_to "Login", new_user_session_path, :id => 'profile-options', :class => "font-black" %></li>
             <% end %>
           </ul>
         </li>

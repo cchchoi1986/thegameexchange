@@ -12,7 +12,8 @@ $(document).ready(function(){
         url: '/comments',
         success: function(response){
           console.log(response);
-          var new_comment = '<tr class="row"><td class="col-xs-1">'+response+'</td><td class="col-xs-3 gamelisttext"><a href="/users/'+response.data.user_id+'">'+response.user_name+'</a></td><td class="col-xs-6 gamelisttext commentbubble">'+response.data.content+'</td><td class="col-xs-2 gamelisttext">'+response.data.created_at+'</td><td class="col-xs-1"><button class="removebutton removecomment" data-id="'+response.data.id+'">X</button></td></tr>';
+
+          var new_comment = '<tr class="row-fluid"><td class="col-xs-1"><a href="/users/'+response.data.user_id+'"><img class="avatar" height="25" src="/assets/'+response.user_avatar+'" width="35"></a></td><td class="col-xs-2 gamelisttext"><a href="/users/'+response.data.user_id+'">'+response.user_name+'</a></td><td class="col-xs-6 gamelisttext commentbubble">'+response.data.content+'</td><td class="col-xs-2 gamelisttext">'+moment(response.data.created_at).fromNow()+'</td><td class="col-xs-1"><button class="removebutton removecomment" data-id="'+response.data.id+'">X</button></td></tr>';
           $("#comments-body").prepend(new_comment);
           $('#comment_content').val("");
         }

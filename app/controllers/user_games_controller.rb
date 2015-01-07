@@ -11,7 +11,7 @@ class UserGamesController < ApplicationController
       # comment.save will talk to the database for us AND  return either TRUE or FALSE
       if user_game.save
        #display
-       render json: {data: user_game, user_id: current_user.username}, status: 201
+       render json: {data: user_game, user_id: current_user.username, avatar_id: current_user.avatar_id, email: current_user.email, location: current_user.location}, status: 201
        puts '>>>> SO FAR SO GOOD'
       else
        #display
@@ -27,11 +27,10 @@ class UserGamesController < ApplicationController
       # render json: {}, status: 204
       # render  status: 204
       head :no_content
-      
       # puts '>>>> SO FAR SO GOOD'
-      else
+    else
       #display
       puts '>>>>>>>> HIHI'
-       end
+    end
   end
 end

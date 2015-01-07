@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get '/search' => 'games#search'
   resources :games
   resources :user_games
+  # resources :offers
+
+  get '/offers/:id' => 'offers#index'
+
+
   # resources :comments
   post '/comments' => 'comments#create'
   delete '/comments/:id' => 'comments#destroy'

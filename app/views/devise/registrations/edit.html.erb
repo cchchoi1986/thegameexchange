@@ -56,6 +56,11 @@
       <%= f.text_field :email, class: "commentsform" %>
     </div>
 
+    <div class="field">
+      <p class="location-label">Location</p>
+      <%= f.text_field :location, class: "commentsform" %>
+    </div>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>

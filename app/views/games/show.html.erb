@@ -14,7 +14,7 @@
   <h2>Title: <%= @game.name %></h2>
   <%= image_tag @game.image, :size => '200x170' %>
     <!-- Button trigger modal -->
-  <button type="button" class="gamenavbuttons" data-toggle="modal" data-target="#myModal">
+  <button type="button" id="add_user_games_button" class="gamenavbuttons" data-toggle="modal" data-target="#myModal">
     Add to My Lists
   </button>
 
@@ -99,7 +99,6 @@
 <div class="custom-list">
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
     <div class="row">
-      <% if @listwantedusers.length > 0 %>
         <h2 class="listtitle">Wanted by:</h2>
         <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
           <thead>
@@ -110,7 +109,8 @@
               <th class="col-xs-3">Location</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="user_game_wanted_list">
+          <% if @listwantedusers.length > 0 %>
             <% @listwantedusers.each do |user| %>
               <tr class="row wantrow">
                 <td class="col-xs-3"><%= link_to user do %><%= image_tag user.avatar_id, :size => '35x25', class: 'avatar' %><% end %></td>
@@ -119,17 +119,16 @@
                 <td class="col-xs-3"><%= link_to user do %><%= user.location %><% end %></td>
               </tr>
             <% end %>
+          <% else %>
           </tbody>
+            <h4 class="emptywantedmessage">Currently no one wants this game</h4>
+          <% end %>
         </table>
-      <% else %>
-        <h4>Currently no one wants this game</h4>
-      <% end %>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
     <div class="row">
-      <% if @listgivenusers.length > 0 %>
         <h2 class="listtitle">Given by:</h2>
         <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
           <thead>
@@ -140,7 +139,8 @@
               <th class="col-xs-3">Location</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="user_game_given_list">
+          <% if @listgivenusers.length > 0 %>
             <% @listgivenusers.each do |user| %>
               <tr class="row giverow">
                 <td class="col-xs-3"><%= link_to user do %><%= image_tag user.avatar_id, :size => '35x25', class: 'avatar' %><% end %></td>
@@ -149,11 +149,11 @@
                 <td class="col-xs-3"><%= link_to user do %><%= user.location %><% end %></td>
               </tr>
             <% end %>
+          <% else %>
           </tbody>
+            <h4 class="emptygivenmessage">Currently no one is willing to give up this game</h4>
+          <% end %>
         </table>
-      <% else %>
-        <h4>Currently no one is willing to give up this game</h4>
-      <% end %>
     </div>
   </div>
   <div class="row"></div>

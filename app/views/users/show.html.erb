@@ -3,15 +3,14 @@
 <div class="jumbo row">
   <%= image_tag @user.avatar_id, :size => '55x45', class: 'avatar' %>
   <h2><%= @user.username %></h2>
-  <h5><% @user.email %></h5>
+  <!-- <h5><%= @user.email %></h5> -->
   <%= render "users/commentsection" %>
 </div>
 
 <div class="row">
 
-  <%= render "users/userwantlist" %>
-
-  <%= render "users/usergivelist" %>
+  <%= render "users/userlist", :usergames => @wanted_game, :rowcss => "wantrow", :emptymessage => "Currently user wants no games", :tableid => "wanted" %>
+  <%= render "users/userlist", :usergames => @given_game, :rowcss => "giverow", :emptymessage => "Currently user has no games to give", :tableid => "given" %>
 
 </div>
 
