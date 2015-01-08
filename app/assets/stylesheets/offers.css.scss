@@ -8,3 +8,62 @@
   color: white;
   font-size: 11px;
 }
+
+.grid {
+  border: 2px solid white;
+  height: 78px;
+  width: 78px;
+  display: inline-block;
+}
+
+.offer_buttons {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 11px;
+  display: inline-block;
+}
+
+.offer_user_title {
+  font-family: 'Trade Winds', cursive;
+}
+
+// font-family: 'Knewave', cursive;
+// font-family: 'Permanent Marker', cursive; +
+// font-family: 'Trade Winds', cursive;
+// font-family: 'Vast Shadow', cursive;
+// font-family: 'Ruslan Display', cursive; +
+// font-family: 'Fugaz One', cursive;
+// font-family: 'Holtwood One SC', serif;
+// font-family: 'Sigmar One', cursive;
+// font-family: 'Monofett', cursive; ++
+// font-family: 'Ceviche One', cursive;
+// font-family: 'Black Ops One', cursive;
+// font-family: 'VT323';
+// font-family: 'Press Start 2P', cursive;
+// font-family: 'Sancreek', cursive;
+// font-family: 'Freckle Face', cursive; +
+// font-family: 'Rock Salt', cursive;
+// font-family: 'Griffy', cursive;
+
+@media (max-width: 768px) {
+  .offer_user_title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .offer_user_title {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 992px) {
+  .offer_user_title {
+    font-size: 45px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .offer_user_title {
+    font-size: 45px;
+  }
+}

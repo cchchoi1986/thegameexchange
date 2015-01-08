@@ -8,7 +8,7 @@
 
 
 # creates default users
-user0 = User.create(:email => "cchchoi1986@gmail.com", :password => 'thisisatest', :password_confirmation => "thisisatest", :username => 'bigbrother801', :location => 'Hong Kong')
+user0 = User.create(:email => "cchchoi1986@gmail.com", :password => 'thisisatest', :password_confirmation => "thisisatest", :username => 'bigbrother801', :location => 'Hong Kong', :avatar => '/images/avatar8.png')
 
 user1 = User.create(:email => "user1@none.com", :password => '12345678', :password_confirmation => "12345678", :username => 'littlebro01', :location => 'Singapore')
 
@@ -17,9 +17,9 @@ user2 = User.create(:email => "user2@none.com", :password => '12345678', :passwo
 user3 = User.create(:email => "user3@none.com", :password => '12345678', :password_confirmation => "12345678", :username => 'littlebro03', :location => 'Arctic Circle')
 
 # creates default posts linked to a user_id
-user_game1 = UserGame.create(game_id: 1122, wantgive: 'w', condition: 3, user_id: user1[:id])
+user_game1 = UserGame.create(game_id: 1022, wantgive: 'w', condition: 3, user_id: user1[:id])
 
-user_game2 = UserGame.create(game_id: 1122, wantgive: 'g', condition: 5, user_id: user3[:id])
+user_game2 = UserGame.create(game_id: 1022, wantgive: 'g', condition: 5, user_id: user3[:id])
 
 user_game3 = UserGame.create(game_id: 5132, wantgive: 'w', condition: 3, user_id: user2[:id])
 

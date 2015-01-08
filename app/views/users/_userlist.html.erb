@@ -30,7 +30,7 @@
                 <td class="col-xs-1"><button class="removebutton" data-id="<%= usergame.id %>">X</button></td>
               <% else %>
                 <td class="col-xs-1">
-                  <%= button_to "Offer", "/offers", method: :get, class: "gamenavbuttons" %>
+                  <%= button_to "Offer", "/offers/#{@user.id}", method: :get, class: "gamenavbuttons" %>
                 </td>
               <% end %>
             </tr>

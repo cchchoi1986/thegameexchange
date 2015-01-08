@@ -1,24 +1,38 @@
-<div class="row">
-
-  <div class="col-xs-6 gamelist">
-    <div class="row custom-list">
-      <%= link_to current_user.username, current_user, :class => "listtitle" %>
-    <div>
-    </div>
-      <%= render '/offers/user_offer_lists', :usergames => @sender_given_list %>
-    </div>
+<div class="row jumbo">
+  <div class="col-xs-6 mytrade_squares">
+    <div class='grid mygrid'></div>
+    <div class='grid mygrid'></div>
+    <div class='grid mygrid'></div>
+    <div class='grid mygrid'></div>
+    <div class='grid mygrid'></div>
+    <div class='grid mygrid'></div>
   </div>
-  <div class="col-xs-6 gamelist">
-    <div class="row custom-list">
-      <%= link_to @receiver.username, @receiver, :class => "listtitle" %>
-      <%= render '/offers/user_offer_lists', :usergames => @receiver_given_list %>
-    </div>
+  <div class="col-xs-6 yourtrade_squares">
+    <div class='grid yourgrid'></div>
+    <div class='grid yourgrid'></div>
+    <div class='grid yourgrid'></div>
+    <div class='grid yourgrid'></div>
+    <div class='grid yourgrid'></div>
+    <div class='grid yourgrid'></div>
   </div>
-
+</div>
+<div class="row custom-list">
+  <div class="col-xs-4 col-sm-offset-3 col-sm-2"><%= button_to "Accept", "#", method: :post, id: "accept_button", class: "btn-success offer_buttons" %></div>
+  <div class="col-xs-4 col-sm-2"><%= button_to "Offer", "#", method: :post, id: "offer_button", class: "btn-primary offer_buttons" %></div>
+  <div class="col-xs-4 col-sm-4"><%= button_to "Decline", "#", method: :post, id: "decline_button", class: "btn-danger offer_buttons" %></div>
 </div>
 
 <div class="row">
-  <div class="col-xs-offset-3 col-xs-3"><%= button_to "Offer!", "#", method: :post, class: "btn-success" %></div>
-  <div class="col-xs-offset-1 col-xs-3"><%= button_to "Decline!", "#", method: :post, class: "btn-danger" %></div>
+  <div class="col-xs-6">
+    <div class="row jumbo">
+      <%= link_to current_user.username, current_user, :class => "offer_user_title" %>
+      <%= render '/offers/user_offer_lists', :usergames => @sender_given_list, :whoofferrow => 'myofferrow' %>
+    </div>
+  </div>
+  <div class="col-xs-6 gamelist">
+    <div class="row jumbo">
+      <%= link_to @receiver.username, @receiver, :class => "offer_user_title" %>
+      <%= render '/offers/user_offer_lists', :usergames => @receiver_given_list, :whoofferrow => 'yourofferrow' %>
+    </div>
   </div>
 </div>
