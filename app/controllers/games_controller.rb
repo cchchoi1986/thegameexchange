@@ -20,7 +20,12 @@ class GamesController < ApplicationController
     @listwantedusers = User.includes(:user_games).where(:user_games => {:game_id=>params[:id], :wantgive=>'w'})
     @listgivenusers = User.includes(:user_games).where(:user_games => {:game_id=>params[:id], :wantgive=>'g'})
     @user_games = UserGame.new
+    # render json: @game
   end
 
+  def add_to_trades
+    @game = Game.find(params[:id])
+    render json: @game
+  end
 
 end

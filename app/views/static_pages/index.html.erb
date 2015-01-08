@@ -12,7 +12,7 @@
   <div class="jumbo">
     <h2>Welcome friendos,</h2>
     <ol>
-      <li><a href="#">Register</a> profile and add to your lists</li>
+      <li><a href="/users/sign_up">Register</a> profile and add to your lists</li>
       <li>Check out users with opposite interests</li>
       <li>Make offers or counteroffers for games</li>
       <li>Agree hand off before accepting trades</li>
@@ -42,7 +42,7 @@
         <tbody>
           <% @wanted_games.each do |game| %>
             <tr class="row wantrow">
-              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
+              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '50x50'  %><% end %></td>
               <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= truncate(game.name, length: 44) %><% end %></td>
               <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
               <td class="col-xs-1 gamelisttext"><%= game.encoding %></td>
@@ -72,7 +72,7 @@
         <tbody>
           <% @given_games.each do |game| %>
             <tr class="row giverow">
-              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '70x50'  %><% end %></td>
+              <td class="col-xs-1" ><%= link_to game do %><%= image_tag game.image, :size => '50x50'  %><% end %></td>
               <td class="col-xs-5 gamelisttext"><%= link_to game do %><%= truncate(game.name, length: 44) %><% end %></td>
               <td class="col-xs-3 gamelisttext"><%= game.compatible %></td>
               <td class="col-xs-1 gamelisttext"><%= game.encoding %></td>

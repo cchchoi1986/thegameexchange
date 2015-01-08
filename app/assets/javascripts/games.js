@@ -1,21 +1,5 @@
 $(document).ready(function(){
   {
-    $(document).on('click','.selectwant',function(){
-      $('.selectwant').removeClass('btn-success');
-      $('.selectgive').removeClass('btn-success');
-      $('.selectwant').addClass('btn-success');
-      $('.user_game_wantgive').val('w');
-    });
-  }
-  {
-    $(document).on('click','.selectgive',function(){
-      $('.selectgive').removeClass('btn-success');
-      $('.selectwant').removeClass('btn-success');
-      $('.selectgive').addClass('btn-success');
-      $('.user_game_wantgive').val('g');
-    });
-  }
-  {
     $(document).on('submit','#new_user_game',function(event){
       event.preventDefault();
       console.log('hihi');
@@ -32,16 +16,16 @@ $(document).ready(function(){
         url: '/user_games',
         success: function(response){
           $('#myModal').modal('hide')
-          $('#add_user_games_button').hide();
+          // $('#add_user_games_button').hide();
           console.log(response);
           if (response.data.wantgive == "w") {
-            var new_wanted_row = '<tr class="row wantrow"><td class="col-xs-3"><a href="/users/'+response.data.user_id+'"><img class="avatar" height="25" src="/assets/'+response.avatar_id+'" width="35"></a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.user_id+'</a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.email+'</td><td class="col-xs-3">'+response.data.location+'</td></tr>';
+            var new_wanted_row = '<tr class="row wantrow"><td class="col-xs-1"><a href="/users/'+response.data.user_id+'"><img class="avatar" height="25" src="'+response.avatar+'" width="25"></a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.user_id+'</a></td><td class="col-xs-4"><a href="/users/'+response.data.user_id+'">'+response.email+'</td><td class="col-xs-4">'+response.location+'</td></tr>';
             $('.user_game_wanted_list').prepend(new_wanted_row);
             $('.emptywantedmessage').html("");
             console.log('hihi1');
           }
           else if (response.data.wantgive == "g") {
-            var new_given_row = '<tr class="row giverow"><td class="col-xs-3"><a href="/users/'+response.data.user_id+'"><img class="avatar" height="25" src="/assets/'+response.avatar_id+'" width="35"></a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.user_id+'</a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.email+'</td><td class="col-xs-3">'+response.data.location+'</td></tr>';
+            var new_given_row = '<tr class="row giverow"><td class="col-xs-1"><a href="/users/'+response.data.user_id+'"><img class="avatar" height="25" src="'+response.avatar+'" width="25"></a></td><td class="col-xs-3"><a href="/users/'+response.data.user_id+'">'+response.user_id+'</a></td><td class="col-xs-4"><a href="/users/'+response.data.user_id+'">'+response.email+'</td><td class="col-xs-4">'+response.location+'</td></tr>';
             $('.user_game_given_list').prepend(new_given_row);
             $('.emptygivenmessage').html("");
             console.log('hihi2');

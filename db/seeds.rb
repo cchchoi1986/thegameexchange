@@ -8,7 +8,7 @@
 
 
 # creates default users
-user0 = User.create(:email => "cchchoi1986@gmail.com", :password => 'thisisatest', :password_confirmation => "thisisatest", :username => 'bigbrother801', :location => 'Hong Kong', :avatar => '/images/avatar8.png')
+user0 = User.create(:email => "cchchoi1986@gmail.com", :password => 'thisisatest', :password_confirmation => "thisisatest", :username => 'bigbrother801', :location => 'Hong Kong')
 
 user1 = User.create(:email => "user1@none.com", :password => '12345678', :password_confirmation => "12345678", :username => 'littlebro01', :location => 'Singapore')
 

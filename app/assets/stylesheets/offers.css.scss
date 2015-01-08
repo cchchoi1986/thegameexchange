@@ -9,11 +9,22 @@
   font-size: 11px;
 }
 
+.no-margin {
+  margin: 0;
+  padding: 0;
+}
+
 .grid {
-  border: 2px solid white;
+  margin: 4px 2px 4px 2px;
   height: 78px;
   width: 78px;
   display: inline-block;
+}
+
+#mygrid, #yourgrid {
+  margin: 4px 0 4px 0;
+  border: 2px dashed white;
+  background: #333;
 }
 
 .offer_buttons {
@@ -23,7 +34,6 @@
 }
 
 .offer_user_title {
-  font-family: 'Trade Winds', cursive;
 }
 
 // font-family: 'Knewave', cursive;

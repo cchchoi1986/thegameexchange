@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @comments = Comment.where({wall_id: params[:id]})
+    @ioffers = Offer.where({send_id: params[:id]})
+    @youoffers = Offer.where({received_id: params[:id]})
     @wanted_game = UserGame.where({user_id: params[:id], wantgive: "w"})
     @given_game = UserGame.where({user_id: params[:id], wantgive: "g"})
     @comment = Comment.new

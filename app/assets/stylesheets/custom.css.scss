@@ -85,6 +85,10 @@ code {
   margin: 0 0 20px;
 }
 
+.gamelisttext {
+  font-size: 11px;
+}
+
 .custom-list {
   background: #999;
   color: black;
@@ -177,7 +181,7 @@ code {
   margin: 2px;
   border-radius: 10px;
   border: 1px solid white;
-  display: inline;
+  display: inline-block;
 }
 
 .wantbutton {
@@ -203,6 +207,10 @@ code {
 // DASHBOARD
 
 #top-wanted > tbody > tr:nth-child(n+11) {
+  display: none;
+}
+
+#top-given > tbody > tr:nth-child(n+11) {
   display: none;
 }
 
@@ -242,4 +250,22 @@ code {
 
 .font-black {
   color:black;
+}
+
+.hihi {
+  // margin: 5px 0;
+  // border: 2px solid white;
+  display: block;
+}
+
+.form-control.select-condition {
+  width: 225px;
+  display: inline-block;
+  margin: 5px;
+}
+
+.form-control.wantgive-condition {
+  width: 100px;
+  display: inline-block;
+  margin: 5px;
 }

@@ -45,6 +45,7 @@ gem 'devise'
 #debugging tools
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'web-console'
 gem 'nokogiri'
 gem 'pry'
 gem 'paperclip', '~> 4.2'

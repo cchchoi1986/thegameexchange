@@ -2,7 +2,7 @@
   <%= form_for @comment, :remote => true do |f| %>
    
     <%= f.label :content, "Message:" %>
-    <%= f.text_field :content, class: "commentsform" %>
+    <%= f.text_field :content, class: "commentsform input-xlarge" %>
 
     <%= f.number_field :wall_id, :value => @user.id, class: "commentsform", :hidden => true %>
 
@@ -27,14 +27,22 @@
   <tbody id="comments-body">
     <% @comments.reverse.each do |comment| %>
       <tr class="row-fluid">
-        <td class="col-xs-1"><%= link_to comment.user do %><%= image_tag comment.user.avatar.url, size: "35x35" %><% end %></td>
+        <td class="col-xs-1">
+          <%= link_to comment.user do %>
+            <% if comment.user.avatar %>
+              <%= image_tag comment.user.avatar.url, size: "30x30" %>
+            <% else %>
+              <%= image_tag 'avatar1.png', size: "30x30" %>
+            <% end %>
+          <% end %>
+        </td>
         <td class="col-xs-2 gamelisttext"><%= link_to comment.user do %><%= comment.user.username %><% end %></td>
         <% if @user.id == current_user.id%>
-          <td class="col-xs-6 gamelisttext commentbubble"><%= comment.content %></td>
+          <td class="col-xs-6 gamelisttext"><%= comment.content %></td>
           <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
           <td class="col-xs-1"><button class="removebutton removecomment" data-id="<%= comment.id %>">X</button></td>
         <% else %>
-          <td class="col-xs-7 gamelisttext commentbubble"><%= comment.content %></td>
+          <td class="col-xs-7 gamelisttext"><%= comment.content %></td>
           <td class="col-xs-2 gamelisttext"><%= time_ago_in_words(comment.created_at) %></td>
         <% end %>
       </tr>

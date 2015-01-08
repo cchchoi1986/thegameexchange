@@ -2,15 +2,20 @@
 
 <div class="jumbo row">
   <%= image_tag @user.avatar.url, size: "100x100" %>
+  
   <h2><%= @user.username %></h2>
+  <% if @user.id != current_user.id %>
+    <%= button_to "Offer", "/offers/#{@user.id}", method: :get, class: "gamenavbuttons btn" %>
+  <% end %>
+  <%= render "users/offerlog" %>
   <!-- <h5><%= @user.email %></h5> -->
   <%= render "users/commentsection" %>
 </div>
 
 <div class="row">
 
-  <%= render "users/userlist", :usergames => @wanted_game, :rowcss => "wantrow", :emptymessage => "Currently user wants no games", :tableid => "wanted" %>
-  <%= render "users/userlist", :usergames => @given_game, :rowcss => "giverow", :emptymessage => "Currently user has no games to give", :tableid => "given" %>
+  <%= render "users/userlist", :usergames => @wanted_game, :rowcss => "wantrow", :emptymessage => "Currently user wants no games", :tableid => "wanted", :thelisttitle => 'WaNTED' %>
+  <%= render "users/userlist", :usergames => @given_game, :rowcss => "giverow", :emptymessage => "Currently user has no games to give", :tableid => "given", :thelisttitle => 'GiVEN' %>
 
 </div>
 

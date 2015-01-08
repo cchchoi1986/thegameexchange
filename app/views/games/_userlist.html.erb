@@ -1,0 +1,37 @@
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-6">
+  <div class="row">
+      <h2 class="listtitle"><%= userslisttitle %></h2>
+      <table class="display table table-border table-condensed tablesorter" cellspacing="0" width="100%">
+        <thead>
+          <tr class="row <%= cssrow %>">
+            <th class="col-xs-1"></th>
+            <th class="col-xs-3">Username</th>
+            <th class="col-xs-4">Email</th>
+            <th class="col-xs-4">Location</th>
+          </tr>
+        </thead>
+        <tbody class="<%= userlistclass %>">
+        <% if listusers.length > 0 %>
+          <% listusers.each do |user| %>
+            <tr class="row <%= cssrow %>">
+              <td class="col-xs-1">
+                <%= link_to user do %>
+                  <% if user.avatar %>
+                    <%= image_tag user.avatar.url, size: "25x25" %>
+                  <% else %>
+                    <%= image_tag 'avatar1.png', size: "25x25" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td class="col-xs-3"><%= link_to user do %><%= user.username %><% end %></td>
+              <td class="col-xs-4"><%= link_to user do %><%= user.email %><% end %></td>
+              <td class="col-xs-4"><%= user.location %></td>
+            </tr>
+          <% end %>
+        <% else %>
+        </tbody>
+          <h4 class="<% emptymessageclass %>"><%= emptymessage %></h4>
+        <% end %>
+      </table>
+  </div>
+</div>
