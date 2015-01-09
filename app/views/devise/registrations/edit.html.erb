@@ -7,24 +7,24 @@
 
     <div class="field">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off", class: "commentsform" %>
+      <%= f.password_field :current_password, autocomplete: "off", :class => "commentsform" %>
     </div>
 
     <div class="field">
       <%= image_tag @user.avatar.url, size: "100x100" %>
       <%= f.label 'Profile Pic' %>
       <%= f.file_field :avatar %>
-      <% f.submit 'Upload', class: "commentsform" %>
+      <% f.submit 'Upload', :class => "commentsform" %>
     </div>
 
     <div class="field">
       <p class="email-label">Email</p>
-      <%= f.text_field :email, class: "commentsform" %>
+      <%= f.text_field :email, :class => "commentsform" %>
     </div>
 
     <div class="field">
       <p class="location-label">Location</p>
-      <%= f.text_field :location, class: "commentsform" %>
+      <%= f.text_field :location, :class => "commentsform" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -33,27 +33,27 @@
 
     <div class="field">
       <%= f.label :username %><br />
-      <%= f.text_field :username, class: "commentsform" %>
+      <%= f.text_field :username, :class => "commentsform" %>
     </div>
 
     <div class="field">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off", class: "commentsform" %>
+      <%= f.password_field :password, autocomplete: "off", :class => "commentsform" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "commentsform" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "commentsform" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Update", class: "gamenavbuttons btn" %>
+      <%= f.submit "Update", :class => "gamenavbuttons btn" %>
     </div>
   <% end %>
 
   <h3>Cancel my account</h3>
 
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-danger" %>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn-danger" %>
 
   <%= link_to "Back", :back %>
 </div>
