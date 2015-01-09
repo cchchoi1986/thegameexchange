@@ -120,7 +120,9 @@ $(document).ready(function(){
   {
     $(document).on('click','.accept_offer',function(event){
       event.preventDefault();
-      console.log($(this).data('id'));
+      // console.log($(this).data('id'));
+      // console.log($(this).parent().parent().parent().siblings($('.offerstatus')));
+      var ccButtons = $('.ccbutton');
       var offerRow = $(this).parent().parent().parent().parent();
       var offerId = $(this).data('id');
       $.ajax({
@@ -133,9 +135,10 @@ $(document).ready(function(){
         dataType: 'json',
         success: function(response){
           console.log(response);
-          $(this).removeClass('offerrow');
-          $(this).addClass('wantrow');
-          $('.ccbutton').hide();
+          offerRow.removeClass('offerrow');
+          offerRow.addClass('wantrow');
+          ccButtons.hide();
+          offerRow.children().closest('.offerstatus').text('Accepted');
         }
       });
     });
@@ -143,25 +146,27 @@ $(document).ready(function(){
   {
     $(document).on('click','.decline_offer',function(event){
       event.preventDefault();
-      console.log($(this).data('id'));
-      console.log($(this).parent().parent().parent().siblings($('.offerstatus')));
+      // console.log($(this).data('id'));
+      // console.log($(this).parent().parent().parent().siblings($('.offerstatus')));
+      var ccButtons = $('.ccbutton');
       var offerRow = $(this).parent().parent().parent().parent();
       var offerId = $(this).data('id');
-      // $.ajax({
-      //   type: 'PUT',
-      //   url: '/offers/'+offerId,
-      //   data: {
-      //       id: offerId,
-      //       status: "Declined"
-      //   },
-      //   dataType: 'json',
-      //   success: function(response){
-      //     console.log(response);
-      //     offerRow.removeClass('offerrow');
-      //     offerRow.addClass('giverow');
-      //     $('.ccbutton').hide();
-      //   }
-      // });
+      $.ajax({
+        type: 'PUT',
+        url: '/offers/'+offerId,
+        data: {
+            id: offerId,
+            status: "Declined"
+        },
+        dataType: 'json',
+        success: function(response){
+          console.log(response);
+          offerRow.removeClass('offerrow');
+          offerRow.addClass('giverow');
+          ccButtons.hide();
+          offerRow.children().closest('.offerstatus').text('Declined');
+        }
+      });
     });
   }
 });

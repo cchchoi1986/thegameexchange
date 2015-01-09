@@ -35,13 +35,13 @@
     <td class="col-xs-1 offerstatus">
       <%= offer.status %>
     </td>
-    <% if offer.send_id == current_user.id %>
+    <% if offer.status == "Accepted" || offer.status =="Declined" %>
+      <td colspan="2" class="col-xs-2">
+    <% elsif offer.send_id == current_user.id %>
       <td class="col-xs-1"></td>
       <td class="col-xs-1">
         <%= button_to "Cancel", "", method: :get, class: "btn-danger cancel_offer", :'data-id' => offer.id, :remote => true %>
-      </td>
-    <% elsif offer.status == "Accepted" || offer.status =="Declined" %>
-      <td colspan="2" class="col-xs-2">
+      </td>  
     <% else %>
       <td class="col-xs-1">
         <%= button_to "Accept", "#", method: :get, class: "btn-success accept_offer", :'data-id' => offer.id, :remote => true %>
