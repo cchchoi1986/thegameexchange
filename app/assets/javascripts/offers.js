@@ -106,7 +106,6 @@ $(document).ready(function(){
       console.log($(this).data('id'));
       var offerRow = $(this).parent().parent().parent().parent();
       var offerId = $(this).data('id');
-      // // console.log(messageRow+","+messageId)
       $.ajax({
         type: 'delete',
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
@@ -114,6 +113,52 @@ $(document).ready(function(){
         success: function(){
           // console.log(response);
           offerRow.html("");
+        }
+      });
+    });
+  }
+  {
+    $(document).on('click','.accept_offer',function(event){
+      event.preventDefault();
+      console.log($(this).data('id'));
+      var offerRow = $(this).parent().parent().parent().parent();
+      var offerId = $(this).data('id');
+      $.ajax({
+        type: 'PUT',
+        url: '/offers/'+offerId,
+        data: {
+            id: offerId,
+            status: "Accepted"
+        },
+        dataType: 'json',
+        success: function(response){
+          console.log(response);
+          $(this).removeClass('offerrow');
+          $(this).addClass('wantrow');
+          $('.ccbutton').hide();
+        }
+      });
+    });
+  }
+  {
+    $(document).on('click','.decline_offer',function(event){
+      event.preventDefault();
+      console.log($(this).data('id'));
+      var offerRow = $(this).parent().parent().parent().parent();
+      var offerId = $(this).data('id');
+      $.ajax({
+        type: 'PUT',
+        url: '/offers/'+offerId,
+        data: {
+            id: offerId,
+            status: "Declined"
+        },
+        dataType: 'json',
+        success: function(response){
+          console.log(response);
+          offerRow.removeClass('offerrow');
+          offerRow.addClass('giverow');
+          $('.ccbutton').hide();
         }
       });
     });

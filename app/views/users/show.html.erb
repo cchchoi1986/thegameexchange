@@ -7,7 +7,28 @@
   <% if @user.id != current_user.id %>
     <%= button_to "Offer", "/offers/#{@user.id}", method: :get, class: "gamenavbuttons btn" %>
   <% end %>
-  <%= render "users/offerlog" %>
+  <table id="offerlog" class="table table-condensed">
+    <thead>
+      <tr class="row-fluid">
+        <th class='col-xs-1'>OfferID</th>
+        <th class='col-xs-2'>Counterparty</th>
+        <th class='col-xs-2'>I Offer</th>
+        <th class='col-xs-2'>They Offer</th>
+        <th class='col-xs-1'>Status</th>
+        <th class='col-xs-1'></th>
+        <th class='col-xs-1'></th>
+      </tr>
+    </thead>
+    <tbody id="offers-body">
+      <%= render "users/offerlog", :offerlistname => @ioffers, :cssrow => 'offerrow' %>
+      <%= render "users/offerlog", :offerlistname => @youoffers, :cssrow => 'offerrow' %>
+      <%= render "users/offerlog", :offerlistname => @iacceptedoffers, :cssrow => 'wantrow' %>
+      <%= render "users/offerlog", :offerlistname => @youacceptedoffers, :cssrow => 'wantrow' %>
+      <%= render "users/offerlog", :offerlistname => @ideclinedoffers, :cssrow => 'giverow' %>
+      <%= render "users/offerlog", :offerlistname => @youdeclinedoffers, :cssrow => 'giverow' %>
+    </tbody>
+  </table>
+  
   <!-- <h5><%= @user.email %></h5> -->
   <%= render "users/commentsection" %>
 </div>

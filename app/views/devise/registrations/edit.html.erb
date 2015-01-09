@@ -6,48 +6,12 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <!-- <table>
-        <tr>
-          <td>
-            <%= image_tag "avatar1.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar1.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar2.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar2.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar3.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar3.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar4.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar4.png' %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= image_tag "avatar5.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar5.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar6.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar6.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar7.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar7.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar8.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar8.png' %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= image_tag "avatar9.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar9.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar10.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar10.png' %>
-          </td>
-          <td>
-            <%= image_tag "avatar11.png", :size => '35x25', class: 'avatar', :"data-id" => 'avatar11.png' %>
-          </td>
-        </tr>
-      </table> -->
-      <%= image_tag @user.avatar.url %>
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "off", class: "commentsform" %>
+    </div>
+
+    <div class="field">
+      <%= image_tag @user.avatar.url, size: "100x100" %>
       <%= f.label 'Profile Pic' %>
       <%= f.file_field :avatar %>
       <% f.submit 'Upload', class: "commentsform" %>
@@ -82,19 +46,14 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "commentsform" %>
     </div>
 
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off", class: "commentsform" %>
-    </div>
-
     <div class="actions">
-      <%= f.submit "Update", class: "gamenavbuttons" %>
+      <%= f.submit "Update", class: "gamenavbuttons btn" %>
     </div>
   <% end %>
 
   <h3>Cancel my account</h3>
 
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "gamenavbuttons" %>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-danger" %>
 
   <%= link_to "Back", :back %>
 </div>

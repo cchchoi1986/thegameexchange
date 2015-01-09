@@ -1,121 +1,56 @@
-<table id="offerlog" class="table table-condensed">
-  <thead>
-    <tr class="row-fluid">
-      <th class='col-xs-1'>OfferID</th>
-      <th class='col-xs-2'>Counterparty</th>
-      <th class='col-xs-2'>I Offer</th>
-      <th class='col-xs-2'>They Offer</th>
-      <th class='col-xs-1'>Status</th>
-      <th class='col-xs-1'></th>
-      <th class='col-xs-1'></th>
-    </tr>
-  </thead>
-  <tbody id="comments-body">
-    <% @ioffers.reverse.each do |offer| %>
-      <tr class="row-fluid offerrow">
-        <td class="col-xs-1">
-          <%= offer.id %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <%= User.find(offer.received_id).username %>
-          <% else %>
-            <%= User.find(offer.send_id).username %>
-          <% end %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <% offer.send_games.each do |d| %>
-              <%= truncate(Game.find(d).name, length: 18) %><br>
-            <% end %>
-          <% else %>
-            <% offer.receive_games.each do |e| %>
-              <%= truncate(Game.find(e).name, length: 18) %><br>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <% offer.receive_games.each do |d| %>
-              <%= truncate(Game.find(d).name, length: 18) %><br>
-            <% end %>
-          <% else %>
-            <% offer.send_games.each do |e| %>
-              <%= truncate(Game.find(e).name, length: 18) %><br>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="col-xs-1">
-          <%= offer.status %>
-        </td>
-        <% if offer.send_id == current_user.id %>
-          <td class="col-xs-1">
-            <%= button_to "Cancel", "", method: :get, class: "btn-danger cancel_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
-          <td class="col-xs-1">
-          </td>
-        <% else %>
-          <td class="col-xs-1">
-            <%= button_to "Accept", "#", method: :get, class: "btn-success accept_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
-          <td class="col-xs-1">
-            <%= button_to "Decline", "#", method: :get, class: "btn-danger decline_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
+<% offerlistname.reverse.each do |offer| %>
+  <tr class="row-fluid <%= cssrow %>">
+    <td class="col-xs-1">
+      <%= offer.id %>
+    </td>
+    <td class="col-xs-2">
+      <% if current_user.id == offer.send_id %>
+        <%= User.find(offer.received_id).username %>
+      <% else %>
+        <%= User.find(offer.send_id).username %>
+      <% end %>
+    </td>
+    <td class="col-xs-2">
+      <% if current_user.id == offer.send_id %>
+        <% offer.send_games.each do |d| %>
+          <%= truncate(Game.find(d).name, length: 18) %><br>
         <% end %>
-      </tr>
-    <% end %>
-    <% @youoffers.reverse.each do |offer| %>
-      <tr class="row-fluid offerrow">
-        <td class="col-xs-1">
-          <%= offer.id %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <%= User.find(offer.received_id).username %>
-          <% else %>
-            <%= User.find(offer.send_id).username %>
-          <% end %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <% offer.send_games.each do |d| %>
-              <%= truncate(Game.find(d).name, length: 18) %><br>
-            <% end %>
-          <% else %>
-            <% offer.receive_games.each do |e| %>
-              <%= truncate(Game.find(e).name, length: 18) %><br>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="col-xs-2">
-          <% if current_user.id == offer.send_id %>
-            <% offer.receive_games.each do |d| %>
-              <%= truncate(Game.find(d).name, length: 18) %><br>
-            <% end %>
-          <% else %>
-            <% offer.send_games.each do |e| %>
-              <%= truncate(Game.find(e).name, length: 18) %><br>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="col-xs-1">
-          <%= offer.status %>
-        </td>
-        <% if offer.send_id == current_user.id %>
-          <td class="col-xs-1">
-            <%= button_to "Cancel", "", method: :get, class: "btn-danger cancel_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
-          <td class="col-xs-1">
-          </td>
-        <% else %>
-          <td class="col-xs-1">
-            <%= button_to "Accept", "#", method: :get, class: "btn-success accept_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
-          <td class="col-xs-1">
-            <%= button_to "Decline", "#", method: :get, class: "btn-danger decline_offer", :'data-id' => offer.id, :remote => true %>
-          </td>
+      <% else %>
+        <% offer.receive_games.each do |e| %>
+          <%= truncate(Game.find(e).name, length: 18) %><br>
         <% end %>
-      </tr>
+      <% end %>
+    </td>
+    <td class="col-xs-2">
+      <% if current_user.id == offer.send_id %>
+        <% offer.receive_games.each do |d| %>
+          <%= truncate(Game.find(d).name, length: 18) %><br>
+        <% end %>
+      <% else %>
+        <% offer.send_games.each do |e| %>
+          <%= truncate(Game.find(e).name, length: 18) %><br>
+        <% end %>
+      <% end %>
+    </td>
+    <td class="col-xs-1">
+      <%= offer.status %>
+    </td>
+    <% if offer.send_id == current_user.id %>
+      <td class="col-xs-1">
+        <%= button_to "Cancel", "", method: :get, class: "btn-danger cancel_offer", :'data-id' => offer.id, :remote => true %>
+      </td>
+      <td class="col-xs-1">
+      </td>
+    <% elsif offer.status == "Accepted" || "Declined" %>
+      <td class="col-xs-1">
+      <td class="col-xs-1">
+    <% else %>
+      <td class="col-xs-1">
+        <%= button_to "Accept", "#", method: :get, class: "btn-success accept_offer", :'data-id' => offer.id, :remote => true %>
+      </td>
+      <td class="col-xs-1">
+        <%= button_to "Decline", "#", method: :get, class: "btn-danger decline_offer", :'data-id' => offer.id, :remote => true %>
+      </td>
     <% end %>
-  </tbody>
-</table>
+  </tr>
+<% end %>

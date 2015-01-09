@@ -249,8 +249,14 @@ code {
 }
 
 .font-black {
-  color:black;
+  color: black;
 }
+
+.ccfont-black.font-black {
+  color: black;
+}
+
+
 
 .hihi {
   // margin: 5px 0;
@@ -268,4 +274,8 @@ code {
   width: 100px;
   display: inline-block;
   margin: 5px;
+}
+
+.register_link {
+  color: yellow;
 }

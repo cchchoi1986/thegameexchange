@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   post '/offers' => 'offers#create'
   get '/offers/:id' => 'offers#index'
+  put '/offers/:id' => 'offers#update'
   
 
   # resources :comments

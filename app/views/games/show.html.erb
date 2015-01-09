@@ -18,7 +18,7 @@
       <%= f.text_field :user_id, :value => current_user, class: "commentsform user_game_user_id", :hidden => true %>
       
       <%= f.label :condition %>
-      <%= select_tag(:condition, options_for_select([['New and unused', 5], ['Used and in good condition', 4], ['Damaged case',3], ['No case',2], ['Scratches on disc',1]],4), :class => "form-control select-condition") %><br>
+      <%= select_tag(:condition, options_for_select([['New and unused', 5], ['Used and in good condition', 4], ['Damaged case',3], ['No case',2], ['Scratches on disc',1]],4), :class => "form-control select-condition user_game_condition") %><br>
 
       <%= f.label :wantgive, "Want/Give" %>
       <%= select_tag(:wantgive, options_for_select([['Want', 'w'], ['Give', 'g']],1), :class => "form-control wantgive-condition user_game_wantgive") %>

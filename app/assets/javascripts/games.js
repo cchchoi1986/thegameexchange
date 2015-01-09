@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
   }
   {
-    $(document).on('click','.removebutton',function(event){
+    $(document).on('click','.remove-user-games',function(event){
       event.preventDefault();
       console.log($(this));
       // $(this).parent().parent().hide();

@@ -27,7 +27,7 @@
               <td class="col-xs-2 gamelisttext"><%= usergame.game.version %></td>
               <td class="col-xs-1 gamelisttext"><%= usergame.condition %></td>
               <% if @user.id == current_user.id%>
-                <td class="col-xs-1"><button class="removebutton" data-id="<%= usergame.id %>">X</button></td>
+                <td class="col-xs-1"><button class="removebutton remove-user-games" data-id="<%= usergame.id %>">X</button></td>
               <% else %>
                 <td class="col-xs-1">
                   <%= button_to "Offer", "/offers/#{@user.id}", method: :get, class: "gamenavbuttons" %>

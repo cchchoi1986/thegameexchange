@@ -27,6 +27,14 @@ class OffersController < ApplicationController
       end
   end
 
+  def update
+    offer = Offer.find(params[:id])
+    offer.update(
+      :status => params[:status]
+    )
+    render json: {data: offer}, status: 201
+  end
+
   def destroy
     offer = Offer.find(params[:id])
     puts '>>>>> PARAMS', params
