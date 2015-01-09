@@ -102,8 +102,8 @@ $(document).ready(function(){
   {
     $(document).on('click','.cancel_offer',function(event){
       event.preventDefault();
-      $(this).parent().parent().parent().parent().hide();
-      console.log($(this).data('id'));
+      // $(this).parent().parent().parent().parent().hide();
+      // console.log($(this).data('id'));
       var offerRow = $(this).parent().parent().parent().parent();
       var offerId = $(this).data('id');
       $.ajax({
@@ -144,23 +144,24 @@ $(document).ready(function(){
     $(document).on('click','.decline_offer',function(event){
       event.preventDefault();
       console.log($(this).data('id'));
+      console.log($(this).parent().parent().parent().siblings($('.offerstatus')));
       var offerRow = $(this).parent().parent().parent().parent();
       var offerId = $(this).data('id');
-      $.ajax({
-        type: 'PUT',
-        url: '/offers/'+offerId,
-        data: {
-            id: offerId,
-            status: "Declined"
-        },
-        dataType: 'json',
-        success: function(response){
-          console.log(response);
-          offerRow.removeClass('offerrow');
-          offerRow.addClass('giverow');
-          $('.ccbutton').hide();
-        }
-      });
+      // $.ajax({
+      //   type: 'PUT',
+      //   url: '/offers/'+offerId,
+      //   data: {
+      //       id: offerId,
+      //       status: "Declined"
+      //   },
+      //   dataType: 'json',
+      //   success: function(response){
+      //     console.log(response);
+      //     offerRow.removeClass('offerrow');
+      //     offerRow.addClass('giverow');
+      //     $('.ccbutton').hide();
+      //   }
+      // });
     });
   }
 });

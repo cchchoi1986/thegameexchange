@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/offers' => 'offers#create'
   get '/offers/:id' => 'offers#index'
   put '/offers/:id' => 'offers#update'
-  
+  delete '/offers/:id' => 'offers#destroy'
 
   # resources :comments
   post '/comments' => 'comments#create'
