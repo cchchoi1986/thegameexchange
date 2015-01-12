@@ -1,7 +1,9 @@
 class OffersController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @receiver = User.find(params[:id])
-    @sender_given_list = UserGame.where({user_id: current_user.id, wantgive: "g"})
+    @sender_given_list = UserGame.where({user_id: current_user, wantgive: "g"})
     @receiver_given_list = UserGame.where({user_id: params[:id], wantgive: "g"})
   end
 

@@ -13,6 +13,7 @@ I'm using these tools:
 * Play-Asia API
 * AJAX
 * JQuery
+* Paperclip Gem
 
 ## Getting Started
 

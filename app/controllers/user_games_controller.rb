@@ -1,4 +1,6 @@
 class UserGamesController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
        puts '>>>>>>>PARAMS :', params
        user_game = UserGame.new(

@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
        # puts '>>>>>>>PARAMS :', params
        comment = Comment.new(
-         :content => params[:content], 
-         :wall_id => params[:wall_id],
+         :content => params[:comment][:content], 
+         :wall_id => params[:comment][:wall_id],
          :user => current_user
        )
 
       # comment.save will talk to the database for us AND  return either TRUE or FALSE
       if comment.save
        #display
-       render json: {data: comment, user_name: current_user.username, user_avatar: current_user.avatar, has_avatar: current_user.avatar_file_name }, status: 201
+       render json: {data: comment, user_name: current_user.username, user_avatar: current_user.avatar, has_avatar: current_user.avatar_file_name, success: true }, status: 201
        # puts '>>>> SO FAR SO GOOD'
       else
        #display

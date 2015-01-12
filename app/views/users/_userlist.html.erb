@@ -11,7 +11,7 @@
             <th class='col-xs-2'>Console</th>
             <th class='col-xs-1'>Locale</th>
             <th class='col-xs-1'>Condition</th>
-            <% if @user.id == current_user.id%>
+            <% if @user == current_user %>
               <th class='col-xs-1'>Remove</th>
             <% else %>
               <th class='col-xs-1'>Offer</th>
@@ -26,7 +26,7 @@
               <td class="col-xs-2 gamelisttext"><%= usergame.game.compatible %></td>
               <td class="col-xs-2 gamelisttext"><%= usergame.game.version %></td>
               <td class="col-xs-1 gamelisttext"><%= usergame.condition %></td>
-              <% if @user.id == current_user.id%>
+              <% if @user == current_user %>
                 <td class="col-xs-1"><button class="removebutton remove-user-games" data-id="<%= usergame.id %>">X</button></td>
               <% else %>
                 <td class="col-xs-1">
