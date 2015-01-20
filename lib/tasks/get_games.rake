@@ -7,36 +7,16 @@ namespace :get_games do
     require 'open-uri'
     require 'nokogiri'
 
-    
+    # pre final scrape query : query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&compatible=4&start=
+
+
     ind = 0
-    
     tot_items = ind +1
-    
     games_array = []
-
-
-    # doc.css('//item').each do |game|
-    #   ng = Hash.new
-    #   ng["pax"] = game.css('pax').text
-    #   ng["price"] = game.css('price').text
-    #   ng["name"] = game.css('name').text
-    #   ng["release_date"] = game.css('release_date').text
-    #   ng["compatible"] = game.css('compatible').text
-    #   ng["version"] = game.css('version').text
-    #   ng["encoding"] = game.css('encoding').text
-    #   ng["genre"] = game.css('genre').text
-    #   ng["url"] = game.css('url').text
-    #   ng["image"] = game.css('image').text
-    #   ng["manufacturer"] = game.css('manufacturer').text
-    #   # puts ng
-    #   array.push(ng)
-    # end
-
-
     while ind < tot_items do
       # puts data
       require_uri = 'http://www.play-asia.com/__api__.php?'
-      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&compatible=4&start='+ind.to_s
+      require_query = 'query=listing&user=147&key=4ffdbb38a2fac2b68f5a804b37353c1e&mask=prnilgvecb&type=1&results=500&start='+ind.to_s
       url = "#{require_uri}#{require_query}"
       data = open(url).read
       doc = Nokogiri::XML(data)
